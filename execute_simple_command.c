@@ -53,16 +53,43 @@ static char	**compose_argv(t_syntax_node *command_tree)
 	return (argv);
 }
 
-
-
 int	is_a_builtin(char *command)
 {
 	if (!ft_strcmp(command, "echo") || !ft_strcmp(command, "cd")
-			|| !ft_strcmp(command, "pwd") || !ft_strcmp(command, "export")
-			|| !ft_strcmp(command, "unset") || !ft_strcmp(command, "env")
-			|| !ft_strcmp(command, "exit"))
+		|| !ft_strcmp(command, "pwd") || !ft_strcmp(command, "export")
+		|| !ft_strcmp(command, "unset") || !ft_strcmp(command, "env")
+		|| !ft_strcmp(command, "exit"))
 		return (1);
 	return (0);
+}
+
+static void	execute_in_child(t_syntax_node *tree_root,
+		t_redirections *redirect, char **argv, t_tab *tabs)
+{
+	char	*filepath;
+
+	close(redirect->pipefd[0]);
+	close(redirect->pipefd[1]);
+	close(redirect->fdin);
+	close(redirect->fdout);
+	if (is_a_builtin(argv[0]))
+		g_status = execute_builtins(argv, tabs);
+	else
+	{
+		filepath = get_filepath(argv[0], tabs->env);
+		if (filepath)
+			execve(filepath, argv, tabs->env);
+		ft_putstr_fd(argv[0], 2);
+		ft_putendl_fd(": command not found", 2);
+		close_standard_fds();
+		free(filepath);
+		free(argv);
+		delete_syntax_tree(tree_root);
+		g_status = 127;
+	}
+	free_2d_tab(&(tabs->env));
+	free_2d_tab(&(tabs->exp));
+	exit(g_status);
 }
 
 int	execute_simple_command(t_syntax_node *tree_root,
@@ -71,37 +98,13 @@ int	execute_simple_command(t_syntax_node *tree_root,
 {
 	pid_t	pid;
 	char	**argv;
-	char	*filepath;
 
 	argv = compose_argv(command_tree);
 	if (is_a_builtin(argv[0]) && tree_root->right == NULL)
 		return (execute_builtins(argv, tabs));
 	pid = fork();
 	if (pid == 0)
-	{
-		close(redirect->pipefd[0]);
-		close(redirect->pipefd[1]);
-		close(redirect->fdin);
-		close(redirect->fdout);
-		if (is_a_builtin(argv[0]))
-			g_status = execute_builtins(argv, tabs);
-		else
-		{
-			filepath = get_filepath(argv[0], tabs->env);
-			if (filepath)
-				execve(filepath, argv, tabs->env);
-			ft_putstr_fd(argv[0], 2);
-			ft_putendl_fd(": command not found", 2);
-			close_standard_fds();
-			free(filepath);
-			free(argv);
-			delete_syntax_tree(tree_root);
-			g_status = 127;
-		}
-		free_2d_tab(&(tabs->env));
-		free_2d_tab(&(tabs->exp));
-		exit(g_status);
-	}
+		execute_in_child(tree_root, redirect, argv, tabs);
 	free(argv);
 	return (0);
 }
