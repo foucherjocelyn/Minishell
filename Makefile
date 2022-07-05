@@ -1,5 +1,5 @@
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra -g #-fsanitize=address -fsanitize=leak -fsanitize=undefined
+FLAGS	= -Wall -Werror -Wextra -g3 #-fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
 			get_file_path.c close_standard_fds.c ft_tok_lst.c create_token.c \

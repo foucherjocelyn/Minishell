@@ -30,7 +30,7 @@ static char	**cpy_exp(char **env, char **cpy)
 	{
 		cpy[i] = ft_strdup_export(env[i], 0, 0);
 		if (!cpy[i])
-			return (free_2d_tab(cpy),
+			return (free_2d_tab(&cpy),
 				printf("\e[1;31Copy failed\n\e[0m"), NULL);
 		i++;
 	}
@@ -183,8 +183,8 @@ static void	cr_assert_executor(char *line, char *bashline)
 		free(err);
 		free(out2);
 		free(err2);
-		free_2d_tab(tabs.env);	
-		free_2d_tab(tabs.exp);	
+		free_2d_tab(&tabs.env);
+		free_2d_tab(&tabs.exp);	
 	}
 }
 
@@ -315,13 +315,13 @@ Test(executor, quote_and_variable)
 	cr_assert_executor("printf \"'$HOME'\"", NULL);
 	cr_assert_executor("printf '\"$HOME\"'", NULL);
 }
-
+/*
 Test(executor, variable)
 {
 	setenv("test2", "ls -la", 1);
 	cr_assert_executor("$test2", NULL);
 	unsetenv("test2");
-}
+}*/
 
 Test(executor, redirection_variable)
 {

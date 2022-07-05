@@ -52,10 +52,11 @@ void	free_2d_tab(char ***tab)
 	i = 0;
 	if (*tab == NULL)
 		return ;
-	while (*tab[i])
+	while ((*tab)[i])
 	{
-		free(*tab[i++]);
-		*tab[i] = NULL;
+		free((*tab)[i]);
+		(*tab)[i] = NULL;
+		i++;
 	}
 	free(*tab);
 	*tab = NULL;

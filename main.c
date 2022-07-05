@@ -83,5 +83,7 @@ int	main(int argc, char **argv, char **argp)
 	}
 	close_standard_fds();
 	rl_clear_history();
+	free_2d_tab(&tabs.env);
+	free_2d_tab(&tabs.exp);
 	return (g_status);
 }
