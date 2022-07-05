@@ -67,20 +67,21 @@ void	word_splitting(t_tok_list **tokens, t_vector **word,
 
 void	expander(t_tok_list **tokens, t_vector *word, char **envp)
 {
-	int i;
-	int index_before_expansion;
+	int	i;
+	int	index_before_expansion;
 
 	i = 0;
 	(void)tokens;
-	while (word && (((char*)(ft_vecget(*word, 0)))[i]))
+	while (word && (((char *)(ft_vecget(*word, 0)))[i]))
 	{
-		while ((((char*)(ft_vecget(*word, 0)))[i]) && ft_strchr("'\"$", (((char*)(ft_vecget(*word, 0))))[i]) == NULL)
+		while ((((char *)(ft_vecget(*word, 0)))[i]) &&
+			ft_strchr("'\"$", (((char *)(ft_vecget(*word, 0))))[i]) == NULL)
 			i++;
-		if ((((char*)(ft_vecget(*word, 0)))[i]) != '\0')
+		if ((((char *)(ft_vecget(*word, 0)))[i]) != '\0')
 		{
-			if ((((char*)(ft_vecget(*word, 0)))[i]) == '\'')
+			if ((((char *)(ft_vecget(*word, 0)))[i]) == '\'')
 				expand_single_quote((word), &i);
-			else if (((((char*)(ft_vecget(*word, 0)))[i])) == '\"')
+			else if (((((char *)(ft_vecget(*word, 0)))[i])) == '\"')
 				expand_double_quote((word), &i, envp);
 			else
 			{
