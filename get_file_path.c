@@ -48,10 +48,11 @@ char	*get_filepath(char *pathname, char **env)
 
 	(void)env;
 	i = 0;
-	path = ft_getenv(env, "PATH");
-	filepath = pathname;
+	filepath = ft_strdup(pathname);
 	if (access(pathname, X_OK) == -1)
 	{
+		path = ft_getenv(env, "PATH");
+		free(filepath);
 		patharray = ft_split(path, ':');
 		while (patharray[i])
 		{
@@ -62,6 +63,7 @@ char	*get_filepath(char *pathname, char **env)
 			filepath = NULL;
 			i++;
 		}
+		free(path);
 		free_array_content(patharray);
 		free(patharray);
 	}

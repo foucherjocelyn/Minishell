@@ -84,18 +84,23 @@ int	execute_simple_command(t_syntax_node *tree_root,
 		close(redirect->fdin);
 		close(redirect->fdout);
 		if (is_a_builtin(argv[0]))
-			execute_builtins(argv, tabs);
+			g_status = execute_builtins(argv, tabs);
 		else
 		{
 			filepath = get_filepath(argv[0], tabs->env);
-			execve(filepath, argv, tabs->env);
+			if (filepath)
+				execve(filepath, argv, tabs->env);
 			ft_putstr_fd(argv[0], 2);
 			ft_putendl_fd(": command not found", 2);
 			close_standard_fds();
+			free(filepath);
 			free(argv);
 			delete_syntax_tree(tree_root);
-			exit (127);
+			g_status = 127;
 		}
+		free_2d_tab(&(tabs->env));
+		free_2d_tab(&(tabs->exp));
+		exit(g_status);
 	}
 	free(argv);
 	return (0);

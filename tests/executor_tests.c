@@ -315,13 +315,13 @@ Test(executor, quote_and_variable)
 	cr_assert_executor("printf \"'$HOME'\"", NULL);
 	cr_assert_executor("printf '\"$HOME\"'", NULL);
 }
-/*
+
 Test(executor, variable)
 {
 	setenv("test2", "ls -la", 1);
 	cr_assert_executor("$test2", NULL);
 	unsetenv("test2");
-}*/
+}
 
 Test(executor, redirection_variable)
 {
