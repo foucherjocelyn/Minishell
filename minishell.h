@@ -25,7 +25,7 @@
 # include "lexer.h"
 # include "parser.h"
 
-extern int g_status;
+extern int	g_status;
 
 typedef struct s_redirections
 {

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtins.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 16:20:11 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/07/05 16:20:12 by jfoucher         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef BUILTINS_H
 # define BUILTINS_H
 # include "minishell.h"
 
 int		execute_builtin_cd(char **to_cd, t_tab *tabs);
 void	chdir_not_found(void);
-int 	execute_builtin_echo(char **args);
-int 	execute_builtin_env(char **env);
-int 	execute_builtin_exit(char **argv, t_tab *tabs);
+int		execute_builtin_echo(char **args);
+int		execute_builtin_env(char **env);
+int		execute_builtin_exit(char **argv, t_tab *tabs);
 int		execute_builtin_export(t_tab *tabs, char **to_export);
 int		execute_builtin_pwd(void);
 void	pwd_not_found(void);
@@ -25,6 +37,6 @@ void	free_2d_tab(char ***tabs);
 void	display(char **display);
 int		len_env(char **env);
 int		found_name(char **env, char *to_find);
-int	    execute_builtins(char **argv, t_tab *tabs);
+int		execute_builtins(char **argv, t_tab *tabs);
 
 #endif

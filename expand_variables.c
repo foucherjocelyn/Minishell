@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_variables.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 16:15:09 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/07/05 16:15:10 by jfoucher         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
+#include <stdio.h>
 #include "minishell.h"
 #include "expander.h"
-#include <stdio.h>
 #include "builtins.h"
 
 static int	expand_exit_status(t_vector *word, int *iter)
@@ -13,7 +25,7 @@ static int	expand_exit_status(t_vector *word, int *iter)
 		return (-1);
 	ft_vecremove(word, (*iter), (*iter));
 	ft_vecinsert(word, (*iter), string_value_of_exit_status,
-			ft_strlen(string_value_of_exit_status) + 1);
+		ft_strlen(string_value_of_exit_status) + 1);
 	*iter += ft_strlen(string_value_of_exit_status);
 	free(string_value_of_exit_status);
 	return (0);
@@ -27,11 +39,11 @@ int	expand_variable(t_vector *word, int *iter, char **env)
 
 	i = (*iter);
 	i++;
-	if (((char*)word->buffer)[i] == '?')
+	if (((char *)word->buffer)[i] == '?')
 		return (expand_exit_status(word, iter));
 	name = ft_veccreate(2, sizeof(char));
-	while (((char*)word->buffer)[i] != '\0'
-			&& ft_isalnum(((char*)word->buffer)[i]) == 1)
+	while (((char *)word->buffer)[i] != '\0'
+			&& ft_isalnum(((char *)word->buffer)[i]) == 1)
 	{
 		ft_vecadd(&name, word->buffer + i);
 		i++;

@@ -16,18 +16,6 @@
 #include "libft.h"
 #include "builtins.h"
 
-static void	free_array_content(char **patharray)
-{
-	int	i;
-
-	i = 0;
-	while (patharray[i])
-	{
-		free(patharray[i]);
-		i++;
-	}
-}
-
 static char	*ft_strjoin_with_slash(char *s1, char *s2)
 {
 	char	*tmp;
@@ -46,7 +34,6 @@ char	*get_filepath(char *pathname, char **env)
 	char	**patharray;
 	int		i;
 
-	(void)env;
 	i = 0;
 	filepath = ft_strdup(pathname);
 	if (access(pathname, X_OK) == -1)
@@ -64,8 +51,7 @@ char	*get_filepath(char *pathname, char **env)
 			i++;
 		}
 		free(path);
-		free_array_content(patharray);
-		free(patharray);
+		free_2d_tab(&patharray);
 	}
 	return (filepath);
 }
