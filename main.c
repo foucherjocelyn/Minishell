@@ -51,14 +51,17 @@ int	main(int argc, char **argv, char **argp)
 	t_syntax_node	*syntax_tree;
 	t_tab			tabs;
 
+	struct sigaction	act;
+	act.sa_handler = SIG_IGN;
+	sigaction(SIGINT, &act, NULL);
+
+
 	(void)argc;
 	(void)argv;
 	g_status = 0;
-	tabs.env = 0;
-	tabs.exp = 0;
 	tabs.env = cpy_env_exp(argp, tabs.env);
 	tabs.exp = cpy_exp(argp, tabs.exp);
-	rl_outstream = stderr;
+//	rl_outstream = stderr;
 	line = readline("$ ");
 	while (line)
 	{

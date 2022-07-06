@@ -23,9 +23,9 @@ static int	expand_exit_status(t_vector *word, int *iter)
 	string_value_of_exit_status = ft_itoa(g_status);
 	if (!string_value_of_exit_status)
 		return (-1);
-	ft_vecremove(word, (*iter), (*iter));
+	ft_vecremove(word, (*iter), (*iter) + 1);
 	ft_vecinsert(word, (*iter), string_value_of_exit_status,
-		ft_strlen(string_value_of_exit_status) + 1);
+		ft_strlen(string_value_of_exit_status));
 	*iter += ft_strlen(string_value_of_exit_status);
 	free(string_value_of_exit_status);
 	return (0);
@@ -41,6 +41,12 @@ int	expand_variable(t_vector *word, int *iter, char **env)
 	i++;
 	if (((char *)word->buffer)[i] == '?')
 		return (expand_exit_status(word, iter));
+	if (((char *)word->buffer)[i] == '\0' || 
+			ft_isalnum(((char *)word->buffer)[i]) != 1)
+	{
+		(*iter)++;
+		return (0);
+	}
 	name = ft_veccreate(2, sizeof(char));
 	while (((char *)word->buffer)[i] != '\0'
 			&& ft_isalnum(((char *)word->buffer)[i]) == 1)

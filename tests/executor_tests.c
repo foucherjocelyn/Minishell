@@ -306,6 +306,12 @@ Test(executor, double_quote)
 	cr_assert_executor("ls \"> out.txt\"", NULL);
 }
 
+
+Test(executor, double_quote2)
+{
+	cr_assert_executor("echo \"> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<\"", NULL);
+}
+
 Test(executor, quote_and_variable)
 {
 	cr_assert_executor("printf $HOME", NULL);
@@ -314,6 +320,7 @@ Test(executor, quote_and_variable)
 	cr_assert_executor("printf \"$HOME ab\"", NULL);
 	cr_assert_executor("printf \"'$HOME'\"", NULL);
 	cr_assert_executor("printf '\"$HOME\"'", NULL);
+	cr_assert_executor("echo \"exit_code ->$? user ->$USER home -> $HOME\"", NULL); 
 }
 
 Test(executor, variable)
@@ -321,6 +328,13 @@ Test(executor, variable)
 	setenv("test2", "ls -la", 1);
 	cr_assert_executor("$test2", NULL);
 	unsetenv("test2");
+}
+
+Test(executor, variable2)
+{
+	setenv("test4", "l", 1);
+	cr_assert_executor("ls -$test4", NULL);
+	unsetenv("test4");
 }
 
 Test(executor, redirection_variable)
