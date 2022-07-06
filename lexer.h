@@ -17,8 +17,6 @@
 enum	e_token_type
 {
 	WORD,
-	QUOTE,
-	DQUOTE,
 	PIPE,
 	GREAT,
 	LESS,

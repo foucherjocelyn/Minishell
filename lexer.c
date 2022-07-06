@@ -17,6 +17,8 @@ static t_token	*take_word(char **iter)
 {
 	t_token		*token;
 	char		special_characters[16];
+	// char const	*special_characters = "|<> \t\n";
+	// int const	*test = &(int){42};
 
 	ft_strlcpy(special_characters, "|<> \t\n", 16);
 	token = create_token(WORD);

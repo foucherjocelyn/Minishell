@@ -20,7 +20,7 @@
 #include "minishell.h"
 #include <stdio.h>
 
-void	execute_redirection(t_syntax_node *command_tree)
+int	execute_redirection(t_syntax_node *command_tree)
 {
 	char	*pathname;
 	int		oldfd;
@@ -39,23 +39,31 @@ void	execute_redirection(t_syntax_node *command_tree)
 	}
 	else
 	{
-		flags = O_CREAT | O_RDONLY;
+		flags = O_RDONLY;
 		newfd = STDIN_FILENO;
 	}
 	pathname = command_tree->left->token->value->buffer;
 	oldfd = open(pathname, flags, 0644);
-	assert(oldfd != -1);
+	if (oldfd == -1)
+	{
+		perror("minishell: invalid_file");
+		g_status = 1;
+		return (-1);
+	}
 	dup2(oldfd, newfd);
 	close(oldfd);
+	return (0);
 }
 
-void	execute_command(t_syntax_node *tree_root, t_syntax_node *command_tree,
+int	execute_command(t_syntax_node *tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
 	if (command_tree->right)
-		execute_redirection(command_tree->right);
+		if (execute_redirection(command_tree->right) == -1)
+			return (-1);
 	execute_simple_command(tree_root, command_tree->left, redirect, tabs);
 	dup2(redirect->fdout, STDOUT_FILENO);
+	return (0);
 }
 
 void	execute_pipe(t_syntax_node *tree_root, t_syntax_node *command_tree,

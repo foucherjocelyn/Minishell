@@ -31,7 +31,7 @@ static char	**cpy_exp(char **env, char **cpy)
 		cpy[i] = ft_strdup_export(env[i], 0, 0);
 		if (!cpy[i])
 			return (free_2d_tab(&cpy),
-				printf("\e[1;31Copy failed\n\e[0m"), NULL);
+					printf("\e[1;31Copy failed\n\e[0m"), NULL);
 		i++;
 	}
 	cpy[i] = 0;
@@ -188,51 +188,59 @@ static void	cr_assert_executor(char *line, char *bashline)
 	}
 }
 
-/*static void	cr_assert_invalid_command(char *line, char *bashline)
-  {
-  char *out, *err;
-  char *out2, *err2;
-  char	*argv[4];
-  int		pid;
-  int		status;
+static void	cr_assert_invalid_command(char *line, char *bashline)
+{
+	char *out, *err;
+	char *out2, *err2;
+	char	*argv[4];
+	int		pid;
+	int		status;
+	t_tab	tabs;
 
-  watch_start();
-  pid = fork();
-  if (pid == 0)
-  {
-  if (!bashline)
-  bashline = line;
-  argv[0] = "bash";
-  argv[1] = "-c";
-  argv[2] = bashline;
-  argv[3] = NULL;
-  execve("/bin/bash", argv, environ);
-  watch_stop(&out, &err);
-  free(out);
-  free(err);
-  }
-  else
-  {
-  wait(&status);
-  watch_stop(&out, &err);
+	watch_start();
+	pid = fork();
+	if (pid == 0)
+	{
+		if (!bashline)
+			bashline = line;
+		argv[0] = "bash";
+		argv[1] = "-c";
+		argv[2] = bashline;
+		argv[3] = NULL;
+		execve("/bin/bash", argv, environ);
+		watch_stop(&out, &err);
+		free(out);
+		free(err);
+	}
+	else
+	{
+		wait(&status);
+		watch_stop(&out, &err);
 
-  watch_start();
-  t_syntax_node	*node;
-  t_tok_list		*tok_list;
-  tok_list = lexer(line);
-  node = parser(tok_list);
-  executor(node, environ);
-  watch_stop(&out2, &err2);
-  cr_assert_str_eq(out2, out);
-  cr_assert_str_eq(err2, err + 6);
-  ft_toklst_clear(&tok_list, NULL);
-  delete_syntax_tree(node);
-  free(out);
-  free(err);
-  free(out2);
-  free(err2);
-  }
-  }*/
+		tabs.env = cpy_env_exp(environ, tabs.env);
+		//display(tabs.env);
+		tabs.exp = cpy_exp(environ, tabs.exp);
+		//display(tabs.exp);
+
+		watch_start();
+		t_syntax_node	*node;
+		t_tok_list		*tok_list;
+		tok_list = lexer(line);
+		node = parser(tok_list, environ);
+		executor(node, &tabs);
+		watch_stop(&out2, &err2);
+		cr_assert_str_eq(out2, out);
+		cr_assert_str_eq(err2 + 11, err + 6);
+		ft_toklst_clear(&tok_list, NULL);
+		delete_syntax_tree(node);
+		free(out);
+		free(err);
+		free(out2);
+		free(err2);
+		free_2d_tab(&tabs.env);
+		free_2d_tab(&tabs.exp);	
+	}
+}
 
 Test(executor, simple_command_ls_noargument)
 {
@@ -275,6 +283,11 @@ Test(executor, redirection_great)
 Test(executor, redirection_less)
 {
 	cr_assert_executor("grep a < Makefile", NULL);
+}
+
+Test(executor, redirection_less_file_does_not_exist)
+{
+	cr_assert_invalid_command("cat < invalid_file", NULL);
 }
 
 Test(executor, redirection_greatgreat)
