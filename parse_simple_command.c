@@ -12,22 +12,6 @@
 
 #include "parser.h"
 
-static void	advance_to_next_command_argument(t_tok_list **token)
-{
-	while (*token && (*token)->token->type != PIPE)
-	{
-		if ((*token)->token->type == WORD)
-			break ;
-		if ((*token)->token->type == GREAT
-			|| (*token)->token->type == GREATGREAT
-			|| (*token)->token->type == LESS)
-		{
-			(*token) = (*token)->next;
-			(*token) = (*token)->next;
-		}
-	}
-}
-
 t_syntax_node	*parse_token_list(t_tok_list **token, char **envp)
 {
 	t_syntax_node	*node;
@@ -50,8 +34,9 @@ t_syntax_node	*parse_simple_command(t_tok_list **token, char **envp)
 {
 	t_syntax_node	*node;
 
-	if (*token && (*token)->token->type != WORD)
-		advance_to_next_command_argument(token);
+	advance_to_next_command_argument(token);
+	if (*token == NULL || (*token)->token->type != WORD)
+		return (NULL);
 	node = create_node();
 	node->type = SIMPLE_COMMAND;
 	node->left = create_node();

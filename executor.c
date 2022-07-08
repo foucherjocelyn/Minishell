@@ -61,7 +61,8 @@ int	execute_command(t_syntax_node *tree_root, t_syntax_node *command_tree,
 	if (command_tree->right)
 		if (execute_redirection(command_tree->right) == -1)
 			return (-1);
-	execute_simple_command(tree_root, command_tree->left, redirect, tabs);
+	if (command_tree->left)
+		execute_simple_command(tree_root, command_tree->left, redirect, tabs);
 	dup2(redirect->fdout, STDOUT_FILENO);
 	return (0);
 }

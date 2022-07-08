@@ -65,22 +65,14 @@ int	main(int argc, char **argv, char **argp)
 	line = readline("$ ");
 	while (line)
 	{
-		if (*line)
-		{
-			add_history(line);
-			token_list = lexer(line);
-			free(line);
-			syntax_tree = parser(token_list, argp);
-			ft_toklst_clear(&token_list, NULL);
-			executor(syntax_tree, &tabs);
-			delete_syntax_tree(syntax_tree);
-			line = readline("$ ");
-		}
-		else
-		{
-			free(line);
-			line = readline("$ ");
-		}
+		add_history(line);
+		token_list = lexer(line);
+		free(line);
+		syntax_tree = parser(token_list, argp);
+		ft_toklst_clear(&token_list, NULL);
+		executor(syntax_tree, &tabs);
+		delete_syntax_tree(syntax_tree);
+		line = readline("$ ");
 	}
 	close_standard_fds();
 	rl_clear_history();

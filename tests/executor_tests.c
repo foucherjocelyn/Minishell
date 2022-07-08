@@ -285,6 +285,11 @@ Test(executor, redirection_less)
 	cr_assert_executor("grep a < Makefile", NULL);
 }
 
+Test(executor, redirection_less_only)
+{
+	cr_assert_executor("< Makefile", NULL);
+}
+
 Test(executor, redirection_less_file_does_not_exist)
 {
 	cr_assert_invalid_command("cat < invalid_file", NULL);
@@ -318,7 +323,6 @@ Test(executor, double_quote)
 {
 	cr_assert_executor("ls \"> out.txt\"", NULL);
 }
-
 
 Test(executor, double_quote2)
 {
