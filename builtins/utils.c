@@ -45,6 +45,18 @@ void	display(char **display)
 		ft_putendl_fd(display[i++], 1);
 }
 
+/*void	display_error(char *cmd, char *error)
+{
+	int	i;
+
+	i = 0;	
+	write(2, "minishell: ", 12);
+	if (cmd)
+	{
+		while (cmd)
+	}
+}*/
+
 void	free_2d_tab(char ***tab)
 {
 	int	i;

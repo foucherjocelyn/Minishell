@@ -55,9 +55,9 @@ static int	check_args(char **to_cd, char **env)
 
 void	chdir_not_found(void)
 {
-	write(1, "chdir: error retrieving current directory: getcwd:", 51);
-	write(1, " cannot access parent directories: No such file or ", 52);
-	write(1, "directory\nbash: cd: ..: Stale file handle\n", 43);
+	write(2, "chdir: error retrieving current directory: getcwd:", 51);
+	write(2, " cannot access parent directories: No such file or ", 52);
+	write(2, "directory\nbash: cd: ..: Stale file handle\n", 43);
 }
 
 char	*path_using_chdir(char *path)
@@ -84,19 +84,24 @@ int	execute_builtin_cd(char **to_cd, t_tab *tabs)
 	if (to_cd[1] && to_cd[1][0] == '\0')
 		return (free(former_pwd_path), EXIT_SUCCESS);
 	if (check_args(to_cd, tabs->env))
-		return (free(former_pwd_path), EXIT_FAILURE);
+		return (deal_with_oldpwd(tabs, former_pwd_path), deal_with_pwd(tabs), EXIT_FAILURE);
 	if (to_cd[1] && access(to_cd[1], F_OK))
 		return (free(former_pwd_path),
-			printf("minishell: cd: %s: No such file or directory\n",
-				to_cd[1]), EXIT_FAILURE);
+			// printf("minishell: cd: %s: No such file or directory\n",
+				/*to_cd[1]), EXIT_FAILURE*/strerror(errno), 1);
+			// strerror(errno);
 	if (to_cd[1] && chdir(path_using_chdir(to_cd[1])) == -1)
-		printf("minishell: cd: %s: Not a directory\n", to_cd[1]);
+		// printf("minishell: cd: %s: Not a directory\n", to_cd[1]);
+		strerror(errno);
 	// else
 	// 	return (chdir_not_found(), EXIT_FAILURE);
 	// if (deal_with_oldpwd(tabs, former_pwd_path))
 	// 	;
 	free(former_pwd_path);
-	// if (deal_with_pwd(tabs))
-	// 	;
+	// printf("\n\n\n\n\n\n\n\n");
+	// execute_builtin_pwd();
+	// printf("\n\n\n\n\n\n\n\n");
+	if (deal_with_pwd(tabs))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

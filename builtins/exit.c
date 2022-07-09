@@ -9,6 +9,7 @@ int	execute_builtin_exit(char **argv, t_tab *tabs)
 	// status = exit_status % 256;
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
+	printf("exit\n");
 	if (argv[0])
 		exit(ft_atoi(argv[0]));
 	else

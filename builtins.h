@@ -13,6 +13,7 @@
 #ifndef BUILTINS_H
 # define BUILTINS_H
 # include "minishell.h"
+# include <errno.h>
 
 int		execute_builtin_cd(char **to_cd, t_tab *tabs);
 void	chdir_not_found(void);

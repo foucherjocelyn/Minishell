@@ -51,14 +51,13 @@ int	main(int argc, char **argv, char **argp)
 	t_syntax_node	*syntax_tree;
 	t_tab			tabs;
 
-	struct sigaction	act;
-	act.sa_handler = SIG_IGN;
-	sigaction(SIGINT, &act, NULL);
+	// struct sigaction	act;
+	// act.sa_handler = SIG_IGN;
+	// sigaction(SIGINT, &act, NULL);
 
 
 	(void)argc;
 	(void)argv;
-	g_status = 0;
 	tabs.env = cpy_env_exp(argp, tabs.env);
 	tabs.exp = cpy_exp(argp, tabs.exp);
 //	rl_outstream = stderr;
@@ -84,7 +83,7 @@ int	main(int argc, char **argv, char **argp)
 	}
 	close_standard_fds();
 	rl_clear_history();
-	free_2d_tab(&tabs.env);
-	free_2d_tab(&tabs.exp);
+	// free_2d_tab(&tabs.env);
+	// free_2d_tab(&tabs.exp);
 	return (g_status);
 }

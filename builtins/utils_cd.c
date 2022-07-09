@@ -52,34 +52,51 @@ int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
 
 	if (found_name_with_value(tabs->env, "OLDPWD") == -1)
 		return (EXIT_FAILURE);
-	to_change = malloc(sizeof(char *) * 2);
+	to_change = malloc(sizeof(char *) * 3);
 	if (!to_change)
-		return (printf("\e[30;101mOLDPWD n a pas ete mis a jour\e[0m"), 1);
-	to_change[0] = malloc(PATH_MAX);
+		return (printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
+	to_change[0] = malloc(2);
 	if (!to_change[0])
 		return (free(to_change),
-			printf("\e[30;101mOLDPWD n a pas ete mis a jour\e[0m"), 1);
-	to_change[0][0] = 0;
-	to_change[0] = ft_strcat(to_change[0], "OLDPWD");
+			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
+	to_change[0][0] = 'u';
+	to_change[0][1] = '\0';
+	to_change[1] = malloc(PATH_MAX);
+	if (!to_change[1])
+		return (free(to_change[0]), free(to_change),
+			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
 	to_change[1] = NULL;
+	to_change[1] = ft_strcat(to_change[1], "OLDPWD");
+	write(1, "oui ou pas \n\n", 13);
+	to_change[2] = NULL;
+	display(to_change);
+	write(1, "oui ou pas \n\n", 13);
 	if (former_pwd_path != NULL)
 	{
+		write(1, "oui ou pas \n\n", 13);
 		execute_builtin_unset(tabs, to_change);
-		to_change[0] = ft_strcat(to_change[0], "=");
-		to_change[0] = ft_strcat(to_change[0], former_pwd_path);
-		free(former_pwd_path);
+		write(1, "oui ou pas \n\n", 13);
+		to_change[1] = ft_strcat(to_change[1], "=");
+		write(1, "oui ou pas \n\n", 13);
+		display(to_change);
+		to_change[1] = ft_strcat(to_change[1], former_pwd_path);
+		write(1, "oui ou pas \n\n", 13);
+		// free(former_pwd_path);
 		execute_builtin_export(tabs, to_change);
 	}
 	else
+	{
+		write(1, "oui ou pas \n\n", 13);
 		execute_builtin_unset(tabs, to_change);
+	}
 	return (free_2d_tab(&to_change), EXIT_SUCCESS);
 }
 
-static void	fck_the_norm(char ***to_set)
+/*static void	fck_the_norm(char **to_set)
 {
-	*to_set[0][0] = 0;
-	*to_set[1] = NULL;
-}
+	to_set[0][0] = 0;
+	to_set[1] = NULL;
+}*/
 
 int	deal_with_pwd(t_tab *tabs)
 {
@@ -90,19 +107,23 @@ int	deal_with_pwd(t_tab *tabs)
 	{
 		if (getcwd(buf, PATH_MAX))
 		{
-			to_change = malloc(sizeof(char *) * 2);
+			to_change = malloc(sizeof(char *) * 3);
 			if (!to_change)
 				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
-			to_change[0] = malloc(5 + ft_strlen(buf));
-			if (!to_change[0])
+			to_change[0] = malloc(2);
+			to_change[0][0] = 'o';
+			to_change[0][1] = 0;
+			to_change[1] = malloc(5 + ft_strlen(buf));
+			if (!to_change[1])
 				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
-			fck_the_norm(&to_change);
-			// to_change[0] = NULL;
-			// to_change[1] = NULL;
-			to_change[0] = ft_strcat(to_change[0], "PWD");
+			// fck_the_norm(to_change);
+			to_change[1][0] = 0;
+			to_change[1] = ft_strcat(to_change[1], "PWD");
+			to_change[2] = NULL;
 			execute_builtin_unset(tabs, to_change);
-			to_change[0] = ft_strcat(to_change[0], "=");
-			to_change[0] = ft_strcat(to_change[0], buf);
+			to_change[1] = ft_strcat(to_change[1], "=");
+			to_change[1] = ft_strcat(to_change[1], buf);
+			// to_change[2] = NULL;
 			execute_builtin_export(tabs, to_change);
 			free(to_change);
 		}
