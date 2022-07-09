@@ -63,5 +63,6 @@ int	expand_variable(t_vector *word, int *iter, char **env)
 		ft_vecinsert(word, (*iter), variable, ft_strlen(variable));
 		(*iter) += ft_strlen(variable);
 	}
+	free(variable);
 	return (0);
 }

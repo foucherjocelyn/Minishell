@@ -33,6 +33,15 @@ Test(lexer, empty_line)
 	cr_assert_lexer(line, expected_types, expected_values);
 }
 
+Test(lexer, only_spaces)
+{
+	char				*line = " ";
+	enum e_token_type	expected_types[] = {};
+	char				*expected_values[] = {};
+
+	cr_assert_lexer(line, expected_types, expected_values);
+}
+
 Test(lexer, one_word)
 {
 	char				*line = "ls";

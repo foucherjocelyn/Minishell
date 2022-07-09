@@ -63,7 +63,7 @@ int	is_a_builtin(char *command)
 	return (0);
 }
 
-static void	execute_in_child(t_syntax_node *tree_root,
+static void	execute_in_child(t_syntax_node *tree_root, 
 		t_redirections *redirect, char **argv, t_tab *tabs)
 {
 	char	*filepath;

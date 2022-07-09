@@ -17,6 +17,22 @@
 #include "parser.h"
 #include "expander.h"
 
+void	advance_to_next_command_argument(t_tok_list **token)
+{
+	while (*token && (*token)->token->type != PIPE)
+	{
+		if ((*token)->token->type == WORD)
+			break ;
+		if ((*token)->token->type == GREAT
+			|| (*token)->token->type == GREATGREAT
+			|| (*token)->token->type == LESS)
+		{
+			(*token) = (*token)->next;
+			(*token) = (*token)->next;
+		}
+	}
+}
+
 t_syntax_node	*parse_redirection(t_tok_list **token, char **envp)
 {
 	t_syntax_node	*node;
@@ -58,7 +74,9 @@ t_syntax_node	*parse_command(t_tok_list **token, char **envp)
 	*token = head_token;
 	node->right = parse_redirection(token, envp);
 	*token = head_token;
-	node->left = parse_simple_command(token, envp);
+	advance_to_next_command_argument(token);
+	if ((*token) && (*token)->token->type == WORD)
+		node->left = parse_simple_command(token, envp);
 	return (node);
 }
 
