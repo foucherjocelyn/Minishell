@@ -34,14 +34,6 @@ typedef struct s_redirections
 	int	pipefd[2];
 }t_redirections;
 
-typedef struct s_as_tree_node
-{
-	int						type;
-	char					*sz_data;
-	struct s_as_tree_node	*left;
-	struct s_as_tree_node	*right;
-}	t_as_tree_node;
-
 typedef struct s_tab
 {
 	char	**env;

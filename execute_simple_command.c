@@ -53,13 +53,18 @@ static char	**compose_argv(t_syntax_node *command_tree)
 	return (argv);
 }
 
-int	is_a_builtin(char *command)
+int	is_a_builtin(const char *command)
 {
-	if (!ft_strcmp(command, "echo") || !ft_strcmp(command, "cd")
-		|| !ft_strcmp(command, "pwd") || !ft_strcmp(command, "export")
-		|| !ft_strcmp(command, "unset") || !ft_strcmp(command, "env")
-		|| !ft_strcmp(command, "exit"))
-		return (1);
+	int	i;
+	const char	*builtins[] = {"cd", "echo", "env", "exit", "export", "pwd", "unset", NULL};
+
+	i = 0;
+	while (builtins[i])
+	{
+		if (!ft_strcmp(command, builtins[i]))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
