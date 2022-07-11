@@ -5,15 +5,22 @@
 int	execute_builtin_exit(char **argv, t_tab *tabs)
 {
 	// unsigned int	status;
-
+	int	exit_status;
 	// status = exit_status % 256;
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
 	printf("exit\n");
+	exit_status = ft_atoi(argv[0]);
 	if (argv[0])
-		exit(ft_atoi(argv[0]));
+	{
+		free_2d_tab(&argv);
+		exit(exit_status);
+	}
 	else
+	{
+		free_2d_tab(&argv);
 		exit(g_status);
+	}
 	/*	si exit est un token il faut juste ft_putendl("exit"); et 
 		mettre le exit status a 0
 		sinon faut tout bien free si c pas deja fait et exit(1);

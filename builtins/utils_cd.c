@@ -67,30 +67,30 @@ int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
 			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
 	to_change[1] = NULL;
 	to_change[1] = ft_strcat(to_change[1], "OLDPWD");
-	write(1, "oui ou pas \n\n", 13);
 	to_change[2] = NULL;
 	display(to_change);
-	write(1, "oui ou pas \n\n", 13);
 	if (former_pwd_path != NULL)
 	{
-		write(1, "oui ou pas \n\n", 13);
+
 		execute_builtin_unset(tabs, to_change);
-		write(1, "oui ou pas \n\n", 13);
+
 		to_change[1] = ft_strcat(to_change[1], "=");
-		write(1, "oui ou pas \n\n", 13);
+
 		display(to_change);
 		to_change[1] = ft_strcat(to_change[1], former_pwd_path);
-		write(1, "oui ou pas \n\n", 13);
+
 		// free(former_pwd_path);
 		execute_builtin_export(tabs, to_change);
 	}
 	else
 	{
-		write(1, "oui ou pas \n\n", 13);
+
 		execute_builtin_unset(tabs, to_change);
 	}
 	return (free_2d_tab(&to_change), EXIT_SUCCESS);
 }
+
+&src[i]
 
 /*static void	fck_the_norm(char **to_set)
 {
