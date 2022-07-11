@@ -60,22 +60,28 @@ int	main(int argc, char **argv, char **argp)
 	(void)argv;
 	tabs.env = cpy_env_exp(argp, tabs.env);
 	tabs.exp = cpy_exp(argp, tabs.exp);
+	g_status = 0;
 //	rl_outstream = stderr;
 	line = readline("$ ");
 	while (line)
 	{
-		add_history(line);
-		token_list = lexer(line);
-		free(line);
-		syntax_tree = parser(token_list, argp);
-		ft_toklst_clear(&token_list, NULL);
-		executor(syntax_tree, &tabs);
-		delete_syntax_tree(syntax_tree);
+		if (line[0] == '\0')
+			free(line);
+		else
+		{
+			add_history(line);
+			token_list = lexer(line);
+			free(line);
+			syntax_tree = parser(token_list, argp);
+			ft_toklst_clear(&token_list, NULL);
+			executor(syntax_tree, &tabs);
+			delete_syntax_tree(syntax_tree);
+		}
 		line = readline("$ ");
 	}
 	close_standard_fds();
 	rl_clear_history();
-	// free_2d_tab(&tabs.env);
-	// free_2d_tab(&tabs.exp);
+	free_2d_tab(&tabs.env);
+	free_2d_tab(&tabs.exp);
 	return (g_status);
 }
