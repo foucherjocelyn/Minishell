@@ -67,11 +67,9 @@ void	free_2d_tab(char ***tab)
 	while ((*tab)[i])
 	{
 		free((*tab)[i]);
-		(*tab)[i] = NULL;
 		i++;
 	}
 	free(*tab);
-	*tab = NULL;
 }
 
 char	*ft_getenv(char **env, char *to_find)

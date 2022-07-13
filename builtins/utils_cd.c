@@ -46,51 +46,121 @@ int	found_name_with_value(char **exp, char *to_find)
 	return (-1);
 }
 
-int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
+// int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
+// {
+// 	char	**to_change;
+
+// 	if (found_name_with_value(tabs->env, "OLDPWD") == -1)
+// 		return (EXIT_FAILURE);
+// 	to_change = malloc(sizeof(char *) * 3);
+// 	if (!to_change)
+// 		return (printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
+// 	to_change[0] = malloc(2);
+// 	if (!to_change[0])
+// 		return (free(to_change),
+// 			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
+// 	to_change[0][0] = 'u';
+// 	to_change[0][1] = '\0';
+// 	to_change[1] = malloc(PATH_MAX);
+// 	if (!to_change[1])
+// 		return (free(to_change[0]), free(to_change),
+// 			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
+// 	to_change[1] = NULL;
+// 	to_change[1] = ft_strcat(to_change[1], "OLDPWD");
+// 	to_change[2] = NULL;
+// 	display(to_change);
+// 	if (former_pwd_path != NULL)
+// 	{
+
+// 		execute_builtin_unset(tabs, to_change);
+
+// 		to_change[1] = ft_strcat(to_change[1], "=");
+
+// 		display(to_change);
+// 		to_change[1] = ft_strcat(to_change[1], former_pwd_path);
+
+// 		// free(former_pwd_path);
+// 		execute_builtin_export(tabs, to_change);
+// 	}
+// 	else
+// 	{
+
+// 		execute_builtin_unset(tabs, to_change);
+// 	}
+// 	return (free_2d_tab(&to_change), EXIT_SUCCESS);
+// }
+
+static void	change_oldpwd_value(char **to_change, char *to_cd)
 {
-	char	**to_change;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 7;
+	if (*to_change)
+		ft_bzero((*to_change), ft_strlen(*to_change));
+	*to_change = ft_strcat(*to_change, "OLDPWD=");
+	while (to_cd[i])
+	{
+		(*to_change)[j] = to_cd[i];
+		i++;
+		j++;
+	}
+	(*to_change)[j] = '\0';
+}
+
+static char	*export_oldpwd(char *real_pwd_path)
+{
+	char	*new_oldpwd;
+
+	new_oldpwd = malloc(PATH_MAX);
+	if (!new_oldpwd)
+		return (/*nique ta mere les leaks, */NULL);
+	new_oldpwd = NULL;
+	new_oldpwd = ft_strcat(new_oldpwd, "OLDPWD=");
+	new_oldpwd = ft_strcat(new_oldpwd, real_pwd_path);
+	return (new_oldpwd);
+}
+
+int	deal_with_oldpwd(t_tab *tabs, char *real_pwd_path, char *getenv_pwd_path)
+{
+	int			j;
+	static int	deal;
 
 	if (found_name_with_value(tabs->env, "OLDPWD") == -1)
 		return (EXIT_FAILURE);
-	to_change = malloc(sizeof(char *) * 3);
-	if (!to_change)
-		return (printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-	to_change[0] = malloc(2);
-	if (!to_change[0])
-		return (free(to_change),
-			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-	to_change[0][0] = 'u';
-	to_change[0][1] = '\0';
-	to_change[1] = malloc(PATH_MAX);
-	if (!to_change[1])
-		return (free(to_change[0]), free(to_change),
-			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-	to_change[1] = NULL;
-	to_change[1] = ft_strcat(to_change[1], "OLDPWD");
-	to_change[2] = NULL;
-	display(to_change);
-	if (former_pwd_path != NULL)
+	j = found_name(tabs->env, "PWD");
+	if (j == -1)
 	{
-
-		execute_builtin_unset(tabs, to_change);
-
-		to_change[1] = ft_strcat(to_change[1], "=");
-
-		display(to_change);
-		to_change[1] = ft_strcat(to_change[1], former_pwd_path);
-
-		// free(former_pwd_path);
-		execute_builtin_export(tabs, to_change);
+		j = found_name(tabs->env, "OLDPWD");
+		if (j != -1 && deal == 0)
+		{
+			while (tabs->env[j])
+			{
+				tabs->env[j] = tabs->env[j + 1];
+				j++;
+			}
+			tabs->env[j] = 0;
+			deal++;
+		}
+		else if (j == -1 && deal >= 1)
+		{
+			tabs->env[len_env(tabs->env)] = ft_strdup(export_oldpwd(real_pwd_path));
+			tabs->env[len_env(tabs->env) + 1] = 0;
+			deal++;
+		}
+		else
+			change_oldpwd_value(&tabs->env[len_env(tabs->env)], real_pwd_path);
 	}
 	else
 	{
-
-		execute_builtin_unset(tabs, to_change);
+		change_oldpwd_value(&tabs->env[found_name(tabs->env, "PWD")], getenv_pwd_path);
+		deal = 0;
 	}
-	return (free_2d_tab(&to_change), EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
-&src[i]
+// &src[i]
 
 /*static void	fck_the_norm(char **to_set)
 {
@@ -98,37 +168,76 @@ int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
 	to_set[1] = NULL;
 }*/
 
+// int	deal_with_pwd(t_tab *tabs)
+// {
+// 	char	buf[PATH_MAX];
+// 	char	**to_change;
+
+// 	if (found_name_with_value(tabs->env, "PWD") != -1)
+// 	{
+// 		if (getcwd(buf, PATH_MAX))
+// 		{
+// 			to_change = malloc(sizeof(char *) * 3);
+// 			if (!to_change)
+// 				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
+// 			to_change[0] = malloc(2);
+// 			to_change[0][0] = 'o';
+// 			to_change[0][1] = 0;
+// 			to_change[1] = malloc(5 + ft_strlen(buf));
+// 			if (!to_change[1])
+// 				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
+// 			// fck_the_norm(to_change);
+// 			to_change[1][0] = 0;
+// 			to_change[1] = ft_strcat(to_change[1], "PWD");
+// 			to_change[2] = NULL;
+// 			execute_builtin_unset(tabs, to_change);
+// 			to_change[1] = ft_strcat(to_change[1], "=");
+// 			to_change[1] = ft_strcat(to_change[1], buf);
+// 			// to_change[2] = NULL;
+// 			execute_builtin_export(tabs, to_change);
+// 			free(to_change);
+// 		}
+// 		else
+// 			return (pwd_not_found(), EXIT_FAILURE);
+// 	}
+// 	return (EXIT_SUCCESS);
+// }
+
+static void	change_pwd_value(char **to_change, char *to_cd)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 7;
+	if (*to_change)
+		ft_bzero((*to_change), ft_strlen(*to_change));
+	*to_change = ft_strcat(*to_change, "PWD=");
+	while (to_cd[i])
+	{
+		(*to_change)[j] = to_cd[i];
+		i++;
+		j++;
+	}
+	(*to_change)[j] = '\0';
+}
+
 int	deal_with_pwd(t_tab *tabs)
 {
 	char	buf[PATH_MAX];
-	char	**to_change;
+	char	*path;
+	int		i;
 
-	if (found_name_with_value(tabs->env, "PWD") != -1)
+	i = found_name_with_value(tabs->env, "PWD");
+	if (i != -1)
 	{
-		if (getcwd(buf, PATH_MAX))
-		{
-			to_change = malloc(sizeof(char *) * 3);
-			if (!to_change)
-				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
-			to_change[0] = malloc(2);
-			to_change[0][0] = 'o';
-			to_change[0][1] = 0;
-			to_change[1] = malloc(5 + ft_strlen(buf));
-			if (!to_change[1])
-				return (printf("\e[1;31mPWD n a pas ete mis a jour\e[0m"), 1);
-			// fck_the_norm(to_change);
-			to_change[1][0] = 0;
-			to_change[1] = ft_strcat(to_change[1], "PWD");
-			to_change[2] = NULL;
-			execute_builtin_unset(tabs, to_change);
-			to_change[1] = ft_strcat(to_change[1], "=");
-			to_change[1] = ft_strcat(to_change[1], buf);
-			// to_change[2] = NULL;
-			execute_builtin_export(tabs, to_change);
-			free(to_change);
-		}
+		path = getcwd(buf, PATH_MAX);
+		if (path)
+			change_pwd_value(&tabs->env[i], path);
 		else
-			return (pwd_not_found(), EXIT_FAILURE);
+			strerror(errno);
 	}
+	else
+		return (strerror(errno), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

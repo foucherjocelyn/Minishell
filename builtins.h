@@ -25,7 +25,7 @@ int		execute_builtin_pwd(void);
 void	pwd_not_found(void);
 int		execute_builtin_unset(t_tab *tabs, char **unset);
 int		found_name_with_value(char **exp, char *to_find);
-int		deal_with_oldpwd(t_tab *tabs, char *former_pwd_path);
+int	    deal_with_oldpwd(t_tab *tabs, char *real_pwd_path, char *getenv_pwd_path);
 int		deal_with_pwd(t_tab *tabs);
 char	*ft_strdup_export(char *src, int i, int j);
 char	**cpy_env_extend(char **env, char **to_export);

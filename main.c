@@ -29,12 +29,12 @@ static char	**cpy_exp(char **env, char **cpy)
 	int		i;
 
 	i = 0;
-	cpy = malloc(sizeof(char *) * (len_env(env) + 1));
+	cpy = malloc(sizeof(char *) * (len_env(env) + 1000));
 	if (!cpy)
 		return (printf("\e[1;31mCopy failed\e[0m"), NULL);
 	while (env[i])
 	{
-		cpy[i] = ft_strdup_export(env[i], 0, 0);
+		cpy[i] = ft_strdup(env[i]);
 		if (!cpy[i])
 			return (free_2d_tab(&cpy),
 				printf("\e[1;31Copy failed\n\e[0m"), NULL);
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **argp)
 
 	(void)argc;
 	(void)argv;
-	tabs.env = cpy_env_exp(argp, tabs.env);
+	tabs.env = cpy_exp(argp, tabs.env);
 	tabs.exp = cpy_exp(argp, tabs.exp);
 	g_status = 0;
 //	rl_outstream = stderr;
