@@ -60,7 +60,7 @@ t_syntax_node	*parse_redirection(t_list **token, char **envp)
 t_syntax_node	*parse_command(t_list **token, char **envp)
 {
 	t_syntax_node	*node;
-	t_list		*head_token;
+	t_list			*head_token;
 
 	node = create_node();
 	node->type = COMMAND;

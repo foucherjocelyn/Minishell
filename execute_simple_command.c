@@ -55,8 +55,9 @@ static char	**compose_argv(t_syntax_node *command_tree)
 
 int	is_a_builtin(const char *command)
 {
-	int	i;
-	const char	*builtins[] = {"cd", "echo", "env", "exit", "export", "pwd", "unset", NULL};
+	int			i;
+	const char	*builtins[] = {"cd", "echo", "env", "exit",
+		"export", "pwd", "unset", NULL};
 
 	i = 0;
 	while (builtins[i])
@@ -68,7 +69,7 @@ int	is_a_builtin(const char *command)
 	return (0);
 }
 
-static void	execute_in_child(t_syntax_node *tree_root, 
+static void	execute_in_child(t_syntax_node *tree_root,
 		t_redirections *redirect, char **argv, t_tab *tabs)
 {
 	char	*filepath;

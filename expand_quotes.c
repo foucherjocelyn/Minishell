@@ -41,7 +41,7 @@ void	word_splitting(t_list **tokens, t_vector **word,
 		int begin, int *iter)
 {
 	t_token		*new;
-	t_list	*new_lst_elem;
+	t_list		*new_lst_elem;
 
 	while (begin < *iter)
 	{

@@ -13,7 +13,7 @@
 #include "minishell.h"
 #include "lexer.h"
 
-t_token		*get_token(t_list *elem)
+t_token	*get_token(t_list *elem)
 {
-	return ((t_token*)elem->content);
+	return ((t_token *)elem->content);
 }
