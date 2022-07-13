@@ -160,8 +160,6 @@ int	deal_with_oldpwd(t_tab *tabs, char *real_pwd_path, char *getenv_pwd_path)
 	return (EXIT_SUCCESS);
 }
 
-// &src[i]
-
 /*static void	fck_the_norm(char **to_set)
 {
 	to_set[0][0] = 0;

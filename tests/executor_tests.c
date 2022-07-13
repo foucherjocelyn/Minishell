@@ -169,7 +169,7 @@ static void	cr_assert_executor(char *line, char *bashline)
 
 		watch_start();
 		t_syntax_node	*node;
-		t_tok_list		*tok_list;
+		t_list		*tok_list;
 		tok_list = lexer(line);
 		node = parser(tok_list, environ);
 		//expander(node, environ);
@@ -177,7 +177,7 @@ static void	cr_assert_executor(char *line, char *bashline)
 		watch_stop(&out2, &err2);
 		cr_assert_str_eq(out2, out);
 		cr_assert_str_eq(err2, err);
-		ft_toklst_clear(&tok_list, NULL);
+		ft_lstclear(&tok_list, NULL);
 		delete_syntax_tree(node);
 		free(out);
 		free(err);
@@ -224,14 +224,14 @@ static void	cr_assert_invalid_command(char *line, char *bashline)
 
 		watch_start();
 		t_syntax_node	*node;
-		t_tok_list		*tok_list;
+		t_list		*tok_list;
 		tok_list = lexer(line);
 		node = parser(tok_list, environ);
 		executor(node, &tabs);
 		watch_stop(&out2, &err2);
 		cr_assert_str_eq(out2, out);
 		cr_assert_str_eq(err2 + 11, err + 6);
-		ft_toklst_clear(&tok_list, NULL);
+		ft_lstclear(&tok_list, NULL);
 		delete_syntax_tree(node);
 		free(out);
 		free(err);

@@ -16,11 +16,8 @@
 static t_token	*take_word(char **iter)
 {
 	t_token		*token;
-	char		special_characters[16];
-	// char const	*special_characters = "|<> \t\n";
-	// int const	*test = &(int){42};
+	const char	*special_characters = "|<> \t\n";
 
-	ft_strlcpy(special_characters, "|<> \t\n", 16);
 	token = create_token(WORD);
 	if (!token)
 		return (NULL);
@@ -54,11 +51,11 @@ static t_token	*take_pipe(char **iter)
 	return (token);
 }
 
-t_tok_list	*lexer(char *line)
+t_list	*lexer(char *line)
 {
-	t_tok_list	*token_list;
-	char		*iter;
-	t_token		*token;
+	t_list	*token_list;
+	char	*iter;
+	t_token	*token;
 
 	iter = line;
 	token_list = NULL;
@@ -74,7 +71,7 @@ t_tok_list	*lexer(char *line)
 				token = take_redirection(&iter);
 			else
 				token = take_word(&iter);
-			ft_toklstadd_back(&token_list, ft_toklstnew(token));
+			ft_lstadd_back(&token_list, ft_lstnew(token));
 		}
 	}
 	return (token_list);

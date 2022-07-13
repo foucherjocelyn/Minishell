@@ -2,7 +2,7 @@ CC		= cc
 FLAGS	= -Wall -Werror -Wextra -g3 #-fsanitize=address -fsanitize=undefined
 
 SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
-			get_file_path.c close_standard_fds.c ft_tok_lst.c create_token.c \
+			get_file_path.c close_standard_fds.c get_token.c create_token.c \
 			destroy_token.c lexer_redirections.c lexer_quotes.c \
 			expand_variables.c expand_quotes.c syntax_tree_utils.c \
 			parse_simple_command.c builtins/cd.c builtins/echo.c	\

@@ -17,15 +17,15 @@
 #include "parser.h"
 #include "expander.h"
 
-void	advance_to_next_command_argument(t_tok_list **token)
+void	advance_to_next_command_argument(t_list **token)
 {
-	while (*token && (*token)->token->type != PIPE)
+	while (*token && get_token(*token)->type != PIPE)
 	{
-		if ((*token)->token->type == WORD)
+		if (get_token(*token)->type == WORD)
 			break ;
-		if ((*token)->token->type == GREAT
-			|| (*token)->token->type == GREATGREAT
-			|| (*token)->token->type == LESS)
+		if (get_token(*token)->type == GREAT
+			|| get_token(*token)->type == GREATGREAT
+			|| get_token(*token)->type == LESS)
 		{
 			(*token) = (*token)->next;
 			(*token) = (*token)->next;
@@ -33,54 +33,54 @@ void	advance_to_next_command_argument(t_tok_list **token)
 	}
 }
 
-t_syntax_node	*parse_redirection(t_tok_list **token, char **envp)
+t_syntax_node	*parse_redirection(t_list **token, char **envp)
 {
 	t_syntax_node	*node;
 
-	while (*token && ((*token)->token->type != GREAT
-			&& (*token)->token->type != LESS
-			&& (*token)->token->type != GREATGREAT)
-		&& (*token)->token->type != PIPE)
+	while (*token && (get_token(*token)->type != GREAT
+			&& get_token(*token)->type != LESS
+			&& get_token(*token)->type != GREATGREAT)
+		&& get_token(*token)->type != PIPE)
 		(*token) = (*token)->next;
-	if ((*token) == NULL || (*token)->token->type == PIPE)
+	if ((*token) == NULL || get_token(*token)->type == PIPE)
 		return (NULL);
 	node = create_node();
 	node->type = REDIRECTION;
-	node->token = (*token)->token;
+	node->token = get_token(*token);
 	(*token) = (*token)->next;
 	node->left = create_node();
 	node->left->type = FILENAME;
-	node->left->token = (*token)->token;
+	node->left->token = get_token(*token);
 	(*token) = (*token)->next;
 	if (*token)
 		node->right = parse_redirection(token, envp);
 	return (node);
 }
 
-t_syntax_node	*parse_command(t_tok_list **token, char **envp)
+t_syntax_node	*parse_command(t_list **token, char **envp)
 {
 	t_syntax_node	*node;
-	t_tok_list		*head_token;
+	t_list			*head_token;
 
 	node = create_node();
 	node->type = COMMAND;
 	head_token = *token;
-	while ((*token) && (*token)->token->type != PIPE)
+	while ((*token) && get_token(*token)->type != PIPE)
 	{
-		if ((*token)->token->type == WORD)
-			expander(token, (*token)->token->value, envp);
+		if (get_token(*token)->type == WORD)
+			expander(token, get_token(*token)->value, envp);
 		(*token) = (*token)->next;
 	}
 	*token = head_token;
 	node->right = parse_redirection(token, envp);
 	*token = head_token;
 	advance_to_next_command_argument(token);
-	if ((*token) && (*token)->token->type == WORD)
+	if ((*token) && get_token(*token)->type == WORD)
 		node->left = parse_simple_command(token, envp);
 	return (node);
 }
 
-t_syntax_node	*parse_job(t_tok_list **token, char **envp)
+t_syntax_node	*parse_job(t_list **token, char **envp)
 {
 	t_syntax_node	*node;
 
@@ -89,9 +89,9 @@ t_syntax_node	*parse_job(t_tok_list **token, char **envp)
 	node->left = parse_command(token, envp);
 	if ((*token))
 	{
-		if ((*token)->token->type == PIPE)
+		if (get_token(*token)->type == PIPE)
 		{
-			node->token = (*token)->token;
+			node->token = get_token(*token);
 			(*token) = (*token)->next;
 			node->right = parse_job(token, envp);
 		}
@@ -99,7 +99,7 @@ t_syntax_node	*parse_job(t_tok_list **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parser(t_tok_list *token, char **envp)
+t_syntax_node	*parser(t_list *token, char **envp)
 {
 	t_syntax_node	*node;
 

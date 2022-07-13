@@ -37,7 +37,7 @@ static void	serialize_tree(t_syntax_node *tree, char buffer[], int *buffer_index
 static void cr_assert_tree(char *line, char *expected_serialized_tree)
 {
 	t_syntax_node	*node;
-	t_tok_list		*tokens;
+	t_list		*tokens;
 	char	buffer[256];
 	int		buffer_index;
 
@@ -48,7 +48,7 @@ static void cr_assert_tree(char *line, char *expected_serialized_tree)
 	buffer[buffer_index - 1] = '\0';
 	cr_assert_str_eq(buffer, expected_serialized_tree);
 	delete_syntax_tree(node);
-	ft_toklst_clear(&tokens, NULL);
+	ft_lstclear(&tokens, NULL);
 }
 
 Test(tree, create_node)

@@ -16,5 +16,5 @@
 # include "minishell.h"
 
 int		expand_variable(t_vector *word, int *iter, char **envp);
-void	expander(t_tok_list **tokens, t_vector *word, char **envp);
+void	expander(t_list **tokens, t_vector *word, char **envp);
 #endif
