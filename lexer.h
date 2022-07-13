@@ -29,17 +29,8 @@ typedef struct s_token
 	t_vector			*value;
 }t_token;
 
-typedef struct s_tok_list
-{
-	t_token				*token;
-	struct s_tok_list	*next;
-}t_tok_list;
-
-t_tok_list	*ft_toklstnew(t_token *token);
-t_tok_list	*ft_toklstlast(t_tok_list *lst);
-void		ft_toklst_clear(t_tok_list **lst, void (*del)(void*));
-void		ft_toklstadd_back(t_tok_list **lst, t_tok_list *new);
-t_tok_list	*lexer(char *line);
+t_token		*get_token(t_list *elem);
+t_list		*lexer(char *line);
 void		destroy_token(t_token *token);
 t_token		*create_token(enum e_token_type type);
 t_token		*take_greatgreat(char **iter);

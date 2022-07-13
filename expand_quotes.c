@@ -37,11 +37,11 @@ void	expand_double_quote(t_vector *value, int *iter, char **envp)
 	ft_vecremove((value), *iter, *iter);
 }
 
-void	word_splitting(t_tok_list **tokens, t_vector **word,
+void	word_splitting(t_list **tokens, t_vector **word,
 		int begin, int *iter)
 {
 	t_token		*new;
-	t_tok_list	*new_lst_elem;
+	t_list	*new_lst_elem;
 
 	while (begin < *iter)
 	{
@@ -53,7 +53,7 @@ void	word_splitting(t_tok_list **tokens, t_vector **word,
 			ft_vecadd(new->value, "\0");
 			ft_vecremove(*word, begin, (*word)->length - 1);
 			ft_vecadd(*word, "\0");
-			new_lst_elem = ft_toklstnew(new);
+			new_lst_elem = ft_lstnew(new);
 			new_lst_elem->next = (*tokens)->next;
 			(*tokens)->next = new_lst_elem;
 			(*tokens) = (*tokens)->next;
@@ -65,7 +65,7 @@ void	word_splitting(t_tok_list **tokens, t_vector **word,
 	}
 }
 
-void	expander(t_tok_list **tokens, t_vector *word, char **envp)
+void	expander(t_list **tokens, t_vector *word, char **envp)
 {
 	int	i;
 	int	index_before_expansion;

@@ -90,8 +90,6 @@ int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
 	return (free_2d_tab(&to_change), EXIT_SUCCESS);
 }
 
-&src[i]
-
 /*static void	fck_the_norm(char **to_set)
 {
 	to_set[0][0] = 0;

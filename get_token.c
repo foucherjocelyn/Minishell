@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.h                                         :+:      :+:    :+:   */
+/*   ft_tok_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 00:01:58 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/23 00:02:01 by jfoucher         ###   ########.fr       */
+/*   Created: 2022/06/15 01:38:27 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/06/15 01:38:34 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANDER_H
-# define EXPANDER_H
-# include "libft.h"
-# include "minishell.h"
+#include "minishell.h"
+#include "lexer.h"
 
-int		expand_variable(t_vector *word, int *iter, char **envp);
-void	expander(t_list **tokens, t_vector *word, char **envp);
-#endif
+t_token		*get_token(t_list *elem)
+{
+	return ((t_token*)elem->content);
+}

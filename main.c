@@ -47,7 +47,7 @@ static char	**cpy_exp(char **env, char **cpy)
 int	main(int argc, char **argv, char **argp)
 {
 	char			*line;
-	t_tok_list		*token_list;
+	t_list		*token_list;
 	t_syntax_node	*syntax_tree;
 	t_tab			tabs;
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv, char **argp)
 			token_list = lexer(line);
 			free(line);
 			syntax_tree = parser(token_list, argp);
-			ft_toklst_clear(&token_list, NULL);
+			ft_lstclear(&token_list, NULL);
 			executor(syntax_tree, &tabs);
 			delete_syntax_tree(syntax_tree);
 		}

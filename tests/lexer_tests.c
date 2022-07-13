@@ -7,8 +7,8 @@
 
 static void	cr_assert_lexer(char *line, enum e_token_type expected_types[], char **expected_values)
 {
-	t_tok_list	*token_list;
-	t_tok_list	*elem;
+	t_list	*token_list;
+	t_list	*elem;
 	int		i;
 
 	token_list = lexer(line);
@@ -16,12 +16,12 @@ static void	cr_assert_lexer(char *line, enum e_token_type expected_types[], char
 	i = 0;
 	while (elem)
 	{
-		cr_assert(elem->token->type == expected_types[i]);
-		cr_assert_str_eq(ft_vecget(*(elem->token->value), 0), expected_values[i]);
+		cr_assert(get_token(elem)->type == expected_types[i]);
+		cr_assert_str_eq(ft_vecget(*(get_token(elem)->value), 0), expected_values[i]);
 		elem = elem->next;
 		i++;
 	}
-	ft_toklst_clear(&token_list, ((void *)(void *)(*destroy_token)));
+	ft_lstclear(&token_list, ((void *)(void *)(*destroy_token)));
 }
 
 Test(lexer, empty_line)

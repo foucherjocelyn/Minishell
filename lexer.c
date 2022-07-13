@@ -54,9 +54,9 @@ static t_token	*take_pipe(char **iter)
 	return (token);
 }
 
-t_tok_list	*lexer(char *line)
+t_list	*lexer(char *line)
 {
-	t_tok_list	*token_list;
+	t_list	*token_list;
 	char		*iter;
 	t_token		*token;
 
@@ -74,7 +74,7 @@ t_tok_list	*lexer(char *line)
 				token = take_redirection(&iter);
 			else
 				token = take_word(&iter);
-			ft_toklstadd_back(&token_list, ft_toklstnew(token));
+			ft_lstadd_back(&token_list, ft_lstnew(token));
 		}
 	}
 	return (token_list);
