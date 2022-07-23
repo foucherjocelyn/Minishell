@@ -17,9 +17,9 @@
       "ft_atoi.o",
       "ft_atoi.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_atoi.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_atoi.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_atoi.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_atoi.o"
   },
   {
     "arguments": [
@@ -39,9 +39,9 @@
       "ft_bzero.o",
       "ft_bzero.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_bzero.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_bzero.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_bzero.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_bzero.o"
   },
   {
     "arguments": [
@@ -61,9 +61,9 @@
       "ft_calloc.o",
       "ft_calloc.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_calloc.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_calloc.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_calloc.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_calloc.o"
   },
   {
     "arguments": [
@@ -83,9 +83,9 @@
       "ft_isalnum.o",
       "ft_isalnum.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isalnum.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isalnum.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isalnum.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isalnum.o"
   },
   {
     "arguments": [
@@ -105,9 +105,9 @@
       "ft_isalpha.o",
       "ft_isalpha.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isalpha.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isalpha.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isalpha.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isalpha.o"
   },
   {
     "arguments": [
@@ -127,9 +127,9 @@
       "ft_isascii.o",
       "ft_isascii.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isascii.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isascii.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isascii.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isascii.o"
   },
   {
     "arguments": [
@@ -149,9 +149,9 @@
       "ft_isdigit.o",
       "ft_isdigit.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isdigit.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isdigit.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isdigit.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isdigit.o"
   },
   {
     "arguments": [
@@ -171,9 +171,9 @@
       "ft_isprint.o",
       "ft_isprint.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isprint.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_isprint.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isprint.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_isprint.o"
   },
   {
     "arguments": [
@@ -193,9 +193,9 @@
       "ft_memchr.o",
       "ft_memchr.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memchr.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memchr.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memchr.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memchr.o"
   },
   {
     "arguments": [
@@ -215,9 +215,9 @@
       "ft_memcmp.o",
       "ft_memcmp.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memcmp.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memcmp.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memcmp.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memcmp.o"
   },
   {
     "arguments": [
@@ -237,9 +237,9 @@
       "ft_memcpy.o",
       "ft_memcpy.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memcpy.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memcpy.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memcpy.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memcpy.o"
   },
   {
     "arguments": [
@@ -259,9 +259,9 @@
       "ft_memmove.o",
       "ft_memmove.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memmove.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memmove.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memmove.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memmove.o"
   },
   {
     "arguments": [
@@ -281,9 +281,9 @@
       "ft_memset.o",
       "ft_memset.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memset.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_memset.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memset.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_memset.o"
   },
   {
     "arguments": [
@@ -303,9 +303,9 @@
       "ft_strchr.o",
       "ft_strchr.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strchr.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strchr.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strchr.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strchr.o"
   },
   {
     "arguments": [
@@ -325,9 +325,9 @@
       "ft_strdup.o",
       "ft_strdup.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strdup.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strdup.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strdup.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strdup.o"
   },
   {
     "arguments": [
@@ -347,9 +347,9 @@
       "ft_strlcat.o",
       "ft_strlcat.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlcat.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlcat.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlcat.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlcat.o"
   },
   {
     "arguments": [
@@ -369,9 +369,9 @@
       "ft_strlcpy.o",
       "ft_strlcpy.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlcpy.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlcpy.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlcpy.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlcpy.o"
   },
   {
     "arguments": [
@@ -391,9 +391,9 @@
       "ft_strlen.o",
       "ft_strlen.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlen.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strlen.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlen.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strlen.o"
   },
   {
     "arguments": [
@@ -413,9 +413,9 @@
       "ft_strncmp.o",
       "ft_strncmp.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strncmp.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strncmp.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strncmp.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strncmp.o"
   },
   {
     "arguments": [
@@ -435,9 +435,9 @@
       "ft_strnstr.o",
       "ft_strnstr.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strnstr.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strnstr.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strnstr.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strnstr.o"
   },
   {
     "arguments": [
@@ -457,9 +457,9 @@
       "ft_strrchr.o",
       "ft_strrchr.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strrchr.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strrchr.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strrchr.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strrchr.o"
   },
   {
     "arguments": [
@@ -479,9 +479,9 @@
       "ft_tolower.o",
       "ft_tolower.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_tolower.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_tolower.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_tolower.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_tolower.o"
   },
   {
     "arguments": [
@@ -501,9 +501,9 @@
       "ft_toupper.o",
       "ft_toupper.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_toupper.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_toupper.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_toupper.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_toupper.o"
   },
   {
     "arguments": [
@@ -523,9 +523,9 @@
       "ft_substr.o",
       "ft_substr.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_substr.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_substr.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_substr.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_substr.o"
   },
   {
     "arguments": [
@@ -545,9 +545,9 @@
       "ft_strjoin.o",
       "ft_strjoin.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strjoin.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strjoin.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strjoin.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strjoin.o"
   },
   {
     "arguments": [
@@ -567,9 +567,9 @@
       "ft_strtrim.o",
       "ft_strtrim.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strtrim.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strtrim.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strtrim.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strtrim.o"
   },
   {
     "arguments": [
@@ -589,9 +589,9 @@
       "ft_split.o",
       "ft_split.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_split.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_split.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_split.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_split.o"
   },
   {
     "arguments": [
@@ -611,9 +611,9 @@
       "ft_itoa.o",
       "ft_itoa.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_itoa.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_itoa.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_itoa.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_itoa.o"
   },
   {
     "arguments": [
@@ -633,9 +633,9 @@
       "ft_strmapi.o",
       "ft_strmapi.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strmapi.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strmapi.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strmapi.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strmapi.o"
   },
   {
     "arguments": [
@@ -655,9 +655,9 @@
       "ft_striteri.o",
       "ft_striteri.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_striteri.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_striteri.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_striteri.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_striteri.o"
   },
   {
     "arguments": [
@@ -677,9 +677,9 @@
       "ft_putchar_fd.o",
       "ft_putchar_fd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putchar_fd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putchar_fd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putchar_fd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putchar_fd.o"
   },
   {
     "arguments": [
@@ -699,9 +699,9 @@
       "ft_putstr_fd.o",
       "ft_putstr_fd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putstr_fd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putstr_fd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putstr_fd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putstr_fd.o"
   },
   {
     "arguments": [
@@ -721,9 +721,9 @@
       "ft_putendl_fd.o",
       "ft_putendl_fd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putendl_fd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putendl_fd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putendl_fd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putendl_fd.o"
   },
   {
     "arguments": [
@@ -743,9 +743,9 @@
       "ft_putnbr_fd.o",
       "ft_putnbr_fd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putnbr_fd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_putnbr_fd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putnbr_fd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_putnbr_fd.o"
   },
   {
     "arguments": [
@@ -765,9 +765,9 @@
       "ft_lstnew.o",
       "ft_lstnew.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstnew.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstnew.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstnew.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstnew.o"
   },
   {
     "arguments": [
@@ -787,9 +787,9 @@
       "ft_lstadd_front.o",
       "ft_lstadd_front.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstadd_front.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstadd_front.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstadd_front.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstadd_front.o"
   },
   {
     "arguments": [
@@ -809,9 +809,9 @@
       "ft_lstsize.o",
       "ft_lstsize.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstsize.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstsize.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstsize.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstsize.o"
   },
   {
     "arguments": [
@@ -831,9 +831,9 @@
       "ft_lstlast.o",
       "ft_lstlast.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstlast.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstlast.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstlast.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstlast.o"
   },
   {
     "arguments": [
@@ -853,9 +853,9 @@
       "ft_lstadd_back.o",
       "ft_lstadd_back.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstadd_back.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstadd_back.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstadd_back.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstadd_back.o"
   },
   {
     "arguments": [
@@ -875,9 +875,9 @@
       "ft_lstdelone.o",
       "ft_lstdelone.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstdelone.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstdelone.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstdelone.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstdelone.o"
   },
   {
     "arguments": [
@@ -897,9 +897,9 @@
       "ft_lstclear.o",
       "ft_lstclear.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstclear.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstclear.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstclear.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstclear.o"
   },
   {
     "arguments": [
@@ -919,9 +919,9 @@
       "ft_lstiter.o",
       "ft_lstiter.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstiter.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstiter.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstiter.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstiter.o"
   },
   {
     "arguments": [
@@ -941,9 +941,9 @@
       "ft_lstmap.o",
       "ft_lstmap.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstmap.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_lstmap.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstmap.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_lstmap.o"
   },
   {
     "arguments": [
@@ -963,9 +963,9 @@
       "ft_veccreate.o",
       "ft_veccreate.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_veccreate.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_veccreate.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_veccreate.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_veccreate.o"
   },
   {
     "arguments": [
@@ -985,9 +985,9 @@
       "ft_vecdestroy.o",
       "ft_vecdestroy.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecdestroy.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecdestroy.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecdestroy.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecdestroy.o"
   },
   {
     "arguments": [
@@ -1007,9 +1007,9 @@
       "ft_vecset.o",
       "ft_vecset.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecset.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecset.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecset.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecset.o"
   },
   {
     "arguments": [
@@ -1029,9 +1029,9 @@
       "ft_vecadd.o",
       "ft_vecadd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecadd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecadd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecadd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecadd.o"
   },
   {
     "arguments": [
@@ -1051,9 +1051,9 @@
       "ft_vecget.o",
       "ft_vecget.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecget.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecget.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecget.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecget.o"
   },
   {
     "arguments": [
@@ -1073,9 +1073,9 @@
       "ft_vecremove.o",
       "ft_vecremove.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecremove.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecremove.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecremove.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecremove.o"
   },
   {
     "arguments": [
@@ -1095,9 +1095,9 @@
       "ft_vecinsert.o",
       "ft_vecinsert.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecinsert.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_vecinsert.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecinsert.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_vecinsert.o"
   },
   {
     "arguments": [
@@ -1117,9 +1117,9 @@
       "ft_strcmp.o",
       "ft_strcmp.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strcmp.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/libft/ft_strcmp.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell/libft",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strcmp.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/libft/ft_strcmp.o"
   },
   {
     "arguments": [
@@ -1142,9 +1142,9 @@
       "lexer.o",
       "lexer.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer.o"
   },
   {
     "arguments": [
@@ -1167,9 +1167,9 @@
       "parser.o",
       "parser.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/parser.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/parser.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/parser.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/parser.o"
   },
   {
     "arguments": [
@@ -1192,9 +1192,9 @@
       "executor.o",
       "executor.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/executor.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/executor.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/executor.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/executor.o"
   },
   {
     "arguments": [
@@ -1217,9 +1217,9 @@
       "execute_simple_command.o",
       "execute_simple_command.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/execute_simple_command.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/execute_simple_command.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/execute_simple_command.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/execute_simple_command.o"
   },
   {
     "arguments": [
@@ -1242,9 +1242,9 @@
       "get_file_path.o",
       "get_file_path.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/get_file_path.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/get_file_path.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/get_file_path.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/get_file_path.o"
   },
   {
     "arguments": [
@@ -1267,9 +1267,9 @@
       "close_standard_fds.o",
       "close_standard_fds.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/close_standard_fds.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/close_standard_fds.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/close_standard_fds.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/close_standard_fds.o"
   },
   {
     "arguments": [
@@ -1292,9 +1292,9 @@
       "get_token.o",
       "get_token.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/get_token.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/get_token.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/get_token.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/get_token.o"
   },
   {
     "arguments": [
@@ -1317,9 +1317,9 @@
       "create_token.o",
       "create_token.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/create_token.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/create_token.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/create_token.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/create_token.o"
   },
   {
     "arguments": [
@@ -1342,9 +1342,9 @@
       "destroy_token.o",
       "destroy_token.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/destroy_token.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/destroy_token.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/destroy_token.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/destroy_token.o"
   },
   {
     "arguments": [
@@ -1367,9 +1367,9 @@
       "lexer_redirections.o",
       "lexer_redirections.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer_redirections.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer_redirections.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer_redirections.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer_redirections.o"
   },
   {
     "arguments": [
@@ -1392,9 +1392,9 @@
       "lexer_quotes.o",
       "lexer_quotes.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer_quotes.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/lexer_quotes.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer_quotes.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/lexer_quotes.o"
   },
   {
     "arguments": [
@@ -1417,9 +1417,9 @@
       "expand_variables.o",
       "expand_variables.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/expand_variables.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/expand_variables.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/expand_variables.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/expand_variables.o"
   },
   {
     "arguments": [
@@ -1442,9 +1442,9 @@
       "expand_quotes.o",
       "expand_quotes.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/expand_quotes.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/expand_quotes.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/expand_quotes.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/expand_quotes.o"
   },
   {
     "arguments": [
@@ -1467,9 +1467,9 @@
       "syntax_tree_utils.o",
       "syntax_tree_utils.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/syntax_tree_utils.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/syntax_tree_utils.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/syntax_tree_utils.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/syntax_tree_utils.o"
   },
   {
     "arguments": [
@@ -1492,9 +1492,9 @@
       "parse_simple_command.o",
       "parse_simple_command.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/parse_simple_command.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/parse_simple_command.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/parse_simple_command.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/parse_simple_command.o"
   },
   {
     "arguments": [
@@ -1517,9 +1517,9 @@
       "builtins/cd.o",
       "builtins/cd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/cd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/cd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/cd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/cd.o"
   },
   {
     "arguments": [
@@ -1542,9 +1542,9 @@
       "builtins/echo.o",
       "builtins/echo.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/echo.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/echo.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/echo.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/echo.o"
   },
   {
     "arguments": [
@@ -1567,9 +1567,9 @@
       "builtins/env.o",
       "builtins/env.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/env.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/env.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/env.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/env.o"
   },
   {
     "arguments": [
@@ -1592,9 +1592,9 @@
       "builtins/exit.o",
       "builtins/exit.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/exit.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/exit.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/exit.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/exit.o"
   },
   {
     "arguments": [
@@ -1617,9 +1617,9 @@
       "builtins/export.o",
       "builtins/export.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/export.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/export.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/export.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/export.o"
   },
   {
     "arguments": [
@@ -1642,9 +1642,9 @@
       "builtins/pwd.o",
       "builtins/pwd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/pwd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/pwd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/pwd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/pwd.o"
   },
   {
     "arguments": [
@@ -1667,9 +1667,9 @@
       "builtins/unset.o",
       "builtins/unset.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/unset.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/unset.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/unset.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/unset.o"
   },
   {
     "arguments": [
@@ -1692,9 +1692,9 @@
       "builtins/utils.o",
       "builtins/utils.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils.o"
   },
   {
     "arguments": [
@@ -1717,9 +1717,9 @@
       "builtins/utils_cd.o",
       "builtins/utils_cd.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_cd.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_cd.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_cd.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_cd.o"
   },
   {
     "arguments": [
@@ -1742,9 +1742,9 @@
       "builtins/utils_export.o",
       "builtins/utils_export.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_export.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_export.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_export.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_export.o"
   },
   {
     "arguments": [
@@ -1767,9 +1767,9 @@
       "builtins/utils_unset.o",
       "builtins/utils_unset.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_unset.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/utils_unset.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_unset.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/utils_unset.o"
   },
   {
     "arguments": [
@@ -1792,9 +1792,9 @@
       "builtins/execute_builtins.o",
       "builtins/execute_builtins.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/execute_builtins.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/builtins/execute_builtins.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/execute_builtins.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/builtins/execute_builtins.o"
   },
   {
     "arguments": [
@@ -1817,9 +1817,9 @@
       "main.o",
       "main.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/main.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/main.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/main.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/main.o"
   },
   {
     "arguments": [
@@ -1870,9 +1870,9 @@
       "minishell",
       "main.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/main.c",
-    "output": "/mnt/nfs/homes/jfoucher/Projects/minishell/minishell"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/main.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/minishell"
   },
   {
     "arguments": [
@@ -1928,7 +1928,7 @@
       "-Werror",
       "-Wextra",
       "-fdebug-compilation-dir",
-      "/mnt/nfs/homes/jfoucher/Projects/minishell",
+      "/mnt/nfs/homes/jfoucher/projects/minishell",
       "-ferror-limit",
       "19",
       "-fgnuc-version=4.2.1",
@@ -1943,11 +1943,11 @@
       "-I",
       "/mnt/nfs/homes/jfoucher/.brew/include",
       "-o",
-      "/tmp/main-1da7c1.o",
+      "/tmp/main-3a3814.o",
       "main.c"
     ],
-    "directory": "/mnt/nfs/homes/jfoucher/Projects/minishell",
-    "file": "/mnt/nfs/homes/jfoucher/Projects/minishell/main.c",
-    "output": "/tmp/main-1da7c1.o"
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/main.c",
+    "output": "/tmp/main-3a3814.o"
   }
 ]

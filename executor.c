@@ -106,6 +106,8 @@ void	executor(t_syntax_node *command_tree, t_tab *tabs)
 {
 	t_redirections	redirect;
 
+	if (!command_tree)
+		return ;
 	redirect.fdin = dup(STDIN_FILENO);
 	redirect.fdout = dup(STDOUT_FILENO);
 	redirect.pipefd[0] = -1;
