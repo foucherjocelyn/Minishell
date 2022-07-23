@@ -52,6 +52,8 @@ int	execute_redirection(t_syntax_node *command_tree)
 	}
 	dup2(oldfd, newfd);
 	close(oldfd);
+    if (command_tree->right)
+		execute_redirection(command_tree->right);
 	return (0);
 }
 
