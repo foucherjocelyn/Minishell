@@ -72,7 +72,7 @@ int	main(int argc, char **argv, char **argp)
 			add_history(line);
 			token_list = lexer(line);
 			free(line);
-			syntax_tree = parser(token_list, argp);
+			syntax_tree = parser(token_list, tabs.env);
 			ft_lstclear(&token_list, NULL);
 			executor(syntax_tree, &tabs);
 			delete_syntax_tree(syntax_tree);
