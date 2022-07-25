@@ -1943,11 +1943,11 @@
       "-I",
       "/mnt/nfs/homes/jfoucher/.brew/include",
       "-o",
-      "/tmp/main-3a3814.o",
+      "/tmp/main-cf7e51.o",
       "main.c"
     ],
     "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
     "file": "/mnt/nfs/homes/jfoucher/projects/minishell/main.c",
-    "output": "/tmp/main-3a3814.o"
+    "output": "/tmp/main-cf7e51.o"
   }
 ]

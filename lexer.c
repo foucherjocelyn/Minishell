@@ -6,10 +6,11 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:09:06 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/07/26 01:28:58 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "minishell.h"
 #include "lexer.h"
 
@@ -51,12 +52,52 @@ static t_token	*take_pipe(char **iter)
 	return (token);
 }
 
+static	int check_for_unclosed_quotes(char *line)
+{
+	char	*next_quote;
+
+	while (*line)
+	{
+		if (*line == '\'')
+		{
+			next_quote = ft_strchr(line + 1, '\'');
+			if (next_quote == NULL)
+			{
+				ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `''\n", 2);
+				g_status = 2;
+				return (-1);
+			}
+			else
+				line = next_quote;
+		}
+		else if (*line == '\"')
+		{
+			next_quote = ft_strchr(line + 1, '\"');
+			if (next_quote == NULL)
+			{
+				ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `\"'\n", 2);
+				g_status = 2;
+				return (-1);
+			}
+			else
+				line = next_quote;
+		}
+		else 
+			line++;
+	}
+	return (0);
+}
+
 t_list	*lexer(char *line)
 {
 	t_list	*token_list;
 	char	*iter;
 	t_token	*token;
 
+	if (check_for_unclosed_quotes(line) == -1)
+		return (NULL);
 	iter = line;
 	token_list = NULL;
 	while (*iter)
