@@ -54,38 +54,23 @@ static t_token	*take_pipe(char **iter)
 
 static	int check_for_unclosed_quotes(char *line)
 {
-	char	*next_quote;
-
 	while (*line)
 	{
 		if (*line == '\'')
 		{
-			next_quote = ft_strchr(line + 1, '\'');
-			if (next_quote == NULL)
-			{
-				ft_putstr_fd("minishell: unexpected EOF "
-						"while looking for matching `''\n", 2);
-				g_status = 2;
-				return (-1);
-			}
-			else
-				line = next_quote;
+			line = ft_strchr(line + 1, '\'');
+			if (line == NULL)
+				return (ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `''\n", 2), -1);
 		}
 		else if (*line == '\"')
 		{
-			next_quote = ft_strchr(line + 1, '\"');
-			if (next_quote == NULL)
-			{
-				ft_putstr_fd("minishell: unexpected EOF "
-						"while looking for matching `\"'\n", 2);
-				g_status = 2;
-				return (-1);
-			}
-			else
-				line = next_quote;
+			line = ft_strchr(line + 1, '\"');
+			if (line == NULL)
+				return (ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `\"'\n", 2), -1);
 		}
-		else 
-			line++;
+		line++;
 	}
 	return (0);
 }
@@ -97,7 +82,7 @@ t_list	*lexer(char *line)
 	t_token	*token;
 
 	if (check_for_unclosed_quotes(line) == -1)
-		return (NULL);
+		return (g_status = 2, NULL);
 	iter = line;
 	token_list = NULL;
 	while (*iter)
