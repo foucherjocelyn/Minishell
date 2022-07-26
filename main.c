@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <lexer.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,24 +45,44 @@ static char	**cpy_exp(char **env, char **cpy)
 	return (cpy);
 }
 
+static int	check_for_unexpected_pipe(t_list *token_list)
+{
+	if (get_token(token_list)->type == PIPE)
+		return (-1);
+	token_list = token_list->next;
+	while (token_list)
+	{
+		if (get_token(token_list)->type == PIPE)
+			if (!token_list->next || get_token(token_list->next)->type == PIPE)
+				return (-1);
+		token_list = token_list->next;
+	}
+	return (0);
+}
+
+int	check_for_unexpected_token(t_list *token_list)
+{
+	if (check_for_unexpected_pipe(token_list) != 0)
+	{
+		ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 2);
+		g_status = 2;
+		return (-1);
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv, char **argp)
 {
 	char			*line;
-	t_list		*token_list;
+	t_list			*token_list;
 	t_syntax_node	*syntax_tree;
 	t_tab			tabs;
-
-	// struct sigaction	act;
-	// act.sa_handler = SIG_IGN;
-	// sigaction(SIGINT, &act, NULL);
-
 
 	(void)argc;
 	(void)argv;
 	tabs.env = cpy_exp(argp, tabs.env);
 	tabs.exp = cpy_exp(argp, tabs.exp);
 	g_status = 0;
-//	rl_outstream = stderr;
 	line = readline("$ ");
 	while (line)
 	{
@@ -72,10 +93,18 @@ int	main(int argc, char **argv, char **argp)
 			add_history(line);
 			token_list = lexer(line);
 			free(line);
-			syntax_tree = parser(token_list, tabs.env);
-			ft_lstclear(&token_list, NULL);
-			executor(syntax_tree, &tabs);
-			delete_syntax_tree(syntax_tree);
+			if (token_list)
+			{
+				if (check_for_unexpected_token(token_list) == -1)
+					ft_lstclear(&token_list, NULL);
+				else
+				{
+					syntax_tree = parser(token_list, tabs.env);
+					ft_lstclear(&token_list, NULL);
+					executor(syntax_tree, &tabs);
+					delete_syntax_tree(syntax_tree);
+				}
+			}
 		}
 		line = readline("$ ");
 	}

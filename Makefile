@@ -1,5 +1,5 @@
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra -g3 #-fsanitize=address -fsanitize=undefined -fsanitize=leak
+FLAGS	= -Wall -Werror -Wextra -g3 -fsanitize=address -fsanitize=undefined -fsanitize=leak
 
 SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
 			get_file_path.c close_standard_fds.c get_token.c create_token.c \
@@ -39,7 +39,7 @@ $(TESTDIR)/obj:
 	mkdir $@
 
 $(NAME):	$(LIBFT) $(OBJS) main.o
-	$(CC) $(FLAGS) main.c $(OBJS) -o $(NAME) -lncurses -lreadline -I libft -I. libft/libft.a
+	$(CC) $(FLAGS) main.c $(OBJS) -o $(NAME) -lreadline -I libft -I. libft/libft.a
 
 unit_tests:	$(LIBFT) $(TESTDIR)/obj $(OBJS) $(TESTOBJS)
 	$(CC) $(FLAGS) $(OBJS) $(TESTOBJS) -o unit_tests -L ~/.brew/lib -lcriterion -lbsd -luuid -lncurses -lreadline -I libft -I. libft/libft.a
