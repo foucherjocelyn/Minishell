@@ -45,41 +45,47 @@ static char	**cpy_exp(char **env, char **cpy)
 	return (cpy);
 }
 
-int	main(int argc, char **argv, char **argp)
+void	parse_and_execute_line(char *line, t_tab *tabs)
 {
-	char			*line;
 	t_list			*token_list;
 	t_syntax_node	*syntax_tree;
+
+	if (line[0] == '\0')
+		free(line);
+	else
+	{
+		add_history(line);
+		token_list = lexer(line);
+		free(line);
+		if (token_list)
+		{
+			if (check_for_unexpected_token(token_list) == -1)
+				ft_lstclear(&token_list, NULL);
+			else
+			{
+				syntax_tree = parser(token_list, tabs->env);
+				ft_lstclear(&token_list, NULL);
+				executor(syntax_tree, tabs);
+				delete_syntax_tree(syntax_tree);
+			}
+		}
+	}
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	char			*line;
 	t_tab			tabs;
 
 	(void)argc;
 	(void)argv;
-	tabs.env = cpy_exp(argp, tabs.env);
-	tabs.exp = cpy_exp(argp, tabs.exp);
+	tabs.env = cpy_exp(envp, tabs.env);
+	tabs.exp = cpy_exp(envp, tabs.exp);
 	g_status = 0;
 	line = readline("$ ");
 	while (line)
 	{
-		if (line[0] == '\0')
-			free(line);
-		else
-		{
-			add_history(line);
-			token_list = lexer(line);
-			free(line);
-			if (token_list)
-			{
-				if (check_for_unexpected_token(token_list) == -1)
-					ft_lstclear(&token_list, NULL);
-				else
-				{
-					syntax_tree = parser(token_list, tabs.env);
-					ft_lstclear(&token_list, NULL);
-					executor(syntax_tree, &tabs);
-					delete_syntax_tree(syntax_tree);
-				}
-			}
-		}
+		parse_and_execute_line(line, &tabs);
 		line = readline("$ ");
 	}
 	close_standard_fds();
