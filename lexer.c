@@ -6,18 +6,11 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2022/07/26 01:28:58 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-=======
-/*   Updated: 2022/06/11 10:09:06 by jfoucher         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 #include "minishell.h"
 #include "lexer.h"
 
@@ -59,7 +52,6 @@ static t_token	*take_pipe(char **iter)
 	return (token);
 }
 
-<<<<<<< HEAD
 static	int check_for_unclosed_quotes(char *line)
 {
 	while (*line)
@@ -83,19 +75,14 @@ static	int check_for_unclosed_quotes(char *line)
 	return (0);
 }
 
-=======
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 t_list	*lexer(char *line)
 {
 	t_list	*token_list;
 	char	*iter;
 	t_token	*token;
 
-<<<<<<< HEAD
 	if (check_for_unclosed_quotes(line) == -1)
 		return (g_status = 2, NULL);
-=======
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	iter = line;
 	token_list = NULL;
 	while (*iter)

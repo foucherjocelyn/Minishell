@@ -1,9 +1,5 @@
 CC		= cc
-<<<<<<< HEAD
-FLAGS	= -Wall -Werror -Wextra -g3 -fsanitize=address -fsanitize=undefined -fsanitize=leak
-=======
 FLAGS	= -Wall -Werror -Wextra -g3 #-fsanitize=address -fsanitize=undefined
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 
 SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
 			get_file_path.c close_standard_fds.c get_token.c create_token.c \
@@ -13,12 +9,8 @@ SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
 			builtins/env.c builtins/exit.c builtins/export.c		\
 			builtins/pwd.c builtins/unset.c builtins/utils.c		\
 			builtins/utils_cd.c	builtins/utils_export.c				\
-<<<<<<< HEAD
-			builtins/utils_unset.c builtins/execute_builtins.c \
+			builtins/utils_unset.c builtins/execute_builtins.c	\
 			check_for_unexpected_token.c
-=======
-			builtins/utils_unset.c builtins/execute_builtins.c
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -48,11 +40,7 @@ $(TESTDIR)/obj:
 	mkdir $@
 
 $(NAME):	$(LIBFT) $(OBJS) main.o
-<<<<<<< HEAD
-	$(CC) $(FLAGS) main.c $(OBJS) -o $(NAME) -lreadline -I libft -I. libft/libft.a
-=======
 	$(CC) $(FLAGS) main.c $(OBJS) -o $(NAME) -lncurses -lreadline -I libft -I. libft/libft.a
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 
 unit_tests:	$(LIBFT) $(TESTDIR)/obj $(OBJS) $(TESTOBJS)
 	$(CC) $(FLAGS) $(OBJS) $(TESTOBJS) -o unit_tests -L ~/.brew/lib -lcriterion -lbsd -luuid -lncurses -lreadline -I libft -I. libft/libft.a

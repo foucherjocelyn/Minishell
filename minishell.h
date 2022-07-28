@@ -18,11 +18,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <unistd.h>
-<<<<<<< HEAD
-# include <limits.h>
-=======
 # include <linux/limits.h>
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 # include <string.h>
 # include <signal.h>
 # include "libft.h"
@@ -48,8 +44,5 @@ int		execute_simple_command(t_syntax_node *tree_root,
 			t_syntax_node *command_tree, t_redirections *redirect,
 			t_tab *tabs);
 void	close_standard_fds(void);
-<<<<<<< HEAD
 int		check_for_unexpected_token(t_list *token_list);
-=======
->>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 #endif
