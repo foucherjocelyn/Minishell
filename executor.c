@@ -52,8 +52,11 @@ int	execute_redirection(t_syntax_node *command_tree)
 	}
 	dup2(oldfd, newfd);
 	close(oldfd);
+<<<<<<< HEAD
     if (command_tree->right)
 		return (execute_redirection(command_tree->right));
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	return (0);
 }
 
@@ -106,8 +109,11 @@ void	executor(t_syntax_node *command_tree, t_tab *tabs)
 {
 	t_redirections	redirect;
 
+<<<<<<< HEAD
 	if (!command_tree)
 		return ;
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	redirect.fdin = dup(STDIN_FILENO);
 	redirect.fdout = dup(STDOUT_FILENO);
 	redirect.pipefd[0] = -1;

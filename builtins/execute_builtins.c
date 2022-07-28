@@ -18,5 +18,9 @@ int	execute_builtins(char **argv, t_tab *tabs)
 	if (!ft_strcmp(argv[0], "cd"))
 		execute_builtin_cd(argv, tabs);
 	free(argv);
+<<<<<<< HEAD
 	return (0);  
+=======
+	return (127);  
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 }

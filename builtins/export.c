@@ -38,6 +38,7 @@ static int	check_args(char **to_export, t_tab *tabs, int j, int error_count)
 	return (error_count);
 }
 
+<<<<<<< HEAD
 // char	**updated_to_export(t_tab *tabs, int index)
 // {
 // 	char	**new_to_export;
@@ -62,12 +63,17 @@ static int	check_args(char **to_export, t_tab *tabs, int j, int error_count)
 // 	return (new_to_export);
 // }
 
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 static void	change_value(char **to_change, char *to_export)
 {
 	int	i;
 
 	i = 0;
+<<<<<<< HEAD
 	// ft_bzero((*to_change), ft_strlen(*to_change));
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	while (to_export[i])
 	{
 		(*to_change)[i] = to_export[i];
@@ -77,6 +83,7 @@ static void	change_value(char **to_change, char *to_export)
 	// display(to_change);
 }
 
+<<<<<<< HEAD
 // int	execute_builtin_export(t_tab *tabs, char **to_export)
 // {
 // 	int		index[4];
@@ -169,10 +176,25 @@ static void	change_value(char **to_change, char *to_export)
 // 	return 0;
 // }
 
+=======
+char	*to_find(char *to_change)
+{
+	int		i;
+	char	*res;
+
+	i = -1;
+	res = malloc(ft_strlen(to_change) + 1);
+	while (to_change[++i] != '=')
+		res[i] = to_change[i];
+	res[i] = 0;
+	return (res);
+}
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 
 int	execute_builtin_export(t_tab *tabs, char **to_export)
 {
 	int		index[4];
+<<<<<<< HEAD
 	// char	**cpy_env_ex;
 	// char	**cpy_exp_ex;
 	// char	**updated;
@@ -182,6 +204,12 @@ int	execute_builtin_export(t_tab *tabs, char **to_export)
 	// index[0] = len_env(tabs->env);
 	// index[3] = len_env(tabs->exp);
 	// printf("taille de env : %d\n\ntaille de exp : %d\n\n", index[0], index[3]);
+=======
+	char	*to_free;
+
+	if (check_args(to_export, tabs, 1, 0))
+		return (EXIT_FAILURE);
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	index[1] = 1;
 	while (to_export[index[1]])
 	{
@@ -193,6 +221,7 @@ int	execute_builtin_export(t_tab *tabs, char **to_export)
 			index[1]++;
 			continue ;
 		}
+<<<<<<< HEAD
 		// else if (found_export_name_with_value(tabs->exp, to_export[index[1]]) != -1)
 		// {
 		// 	updated = updated_to_export(tabs, found_export_name_with_value(tabs->exp, to_export[index[1]]));
@@ -209,16 +238,28 @@ int	execute_builtin_export(t_tab *tabs, char **to_export)
 		// 	cpy_exp_ex[index[3]++] = ft_strdup_export(to_export[index[1]], 0, 0);
 		// 	cpy_env_ex[index[0]++] = ft_strdup(to_export[index[1]]);
 		// }
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 		else if (found_export_name_with_value(tabs->exp, to_export[index[1]]) != -1)
 		{
 			// printf("ca rentre\n\n\n%d\n\n\n", found_export_name_with_value(tabs->exp, to_export[index[1]]));
 			change_value(&tabs->exp[found_export_name_with_value(tabs->exp, to_export[index[1]])], to_export[index[1]]);
+<<<<<<< HEAD
 			if (found_name(tabs->env, to_export[index[1]]) != -1)
 				change_value(&tabs->env[found_export_name_with_value(tabs->env, to_export[index[1]])], to_export[index[1]]);
 			else
 			{
 				tabs->env[index[0]++] = ft_strdup(to_export[index[1]]);
 			}
+=======
+			// display(tabs->env);
+			to_free = to_find(to_export[index[1]]);
+			if (found_name(tabs->env, to_free) != -1)
+				change_value(&tabs->env[found_export_name_with_value(tabs->env, to_export[index[1]])], to_export[index[1]]);
+			else
+				tabs->env[index[0]++] = ft_strdup(to_export[index[1]]);
+			free(to_free);
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 		}
 		else
 		{
@@ -236,7 +277,10 @@ int	execute_builtin_export(t_tab *tabs, char **to_export)
 		tabs->exp[index[3]++] = NULL;
 		index[1]++;
 	}
+<<<<<<< HEAD
 	// tabs->env = cpy_env_ex;
 	// tabs->exp = cpy_exp_ex;
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 	return (EXIT_SUCCESS);
 }

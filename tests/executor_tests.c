@@ -28,7 +28,11 @@ static char	**cpy_exp(char **env, char **cpy)
 		return (printf("\e[1;31mCopy failed\e[0m"), NULL);
 	while (env[i])
 	{
+<<<<<<< HEAD
 		cpy[i] = ft_strdup(env[i]);
+=======
+		cpy[i] = ft_strdup_export(env[i], 0, 0);
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 		if (!cpy[i])
 			return (free_2d_tab(&cpy),
 					printf("\e[1;31Copy failed\n\e[0m"), NULL);

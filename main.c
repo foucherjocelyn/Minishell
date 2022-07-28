@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+<<<<<<< HEAD
 #include <lexer.h>
+=======
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,6 +48,7 @@ static char	**cpy_exp(char **env, char **cpy)
 	return (cpy);
 }
 
+<<<<<<< HEAD
 void	parse_and_execute_line(char *line, t_tab *tabs)
 {
 	t_list			*token_list;
@@ -86,6 +90,41 @@ int	main(int argc, char **argv, char **envp)
 	while (line)
 	{
 		parse_and_execute_line(line, &tabs);
+=======
+int	main(int argc, char **argv, char **argp)
+{
+	char			*line;
+	t_list		*token_list;
+	t_syntax_node	*syntax_tree;
+	t_tab			tabs;
+
+	// struct sigaction	act;
+	// act.sa_handler = SIG_IGN;
+	// sigaction(SIGINT, &act, NULL);
+
+
+	(void)argc;
+	(void)argv;
+	tabs.env = cpy_exp(argp, tabs.env);
+	tabs.exp = cpy_exp(argp, tabs.exp);
+	g_status = 0;
+//	rl_outstream = stderr;
+	line = readline("$ ");
+	while (line)
+	{
+		if (line[0] == '\0')
+			free(line);
+		else
+		{
+			add_history(line);
+			token_list = lexer(line);
+			free(line);
+			syntax_tree = parser(token_list, argp);
+			ft_lstclear(&token_list, NULL);
+			executor(syntax_tree, &tabs);
+			delete_syntax_tree(syntax_tree);
+		}
+>>>>>>> 6b16524cecc1780fb656448c617d26512105777e
 		line = readline("$ ");
 	}
 	close_standard_fds();
