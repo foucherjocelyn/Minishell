@@ -9,7 +9,8 @@ SRCS	= lexer.c parser.c executor.c execute_simple_command.c \
 			builtins/env.c builtins/exit.c builtins/export.c		\
 			builtins/pwd.c builtins/unset.c builtins/utils.c		\
 			builtins/utils_cd.c	builtins/utils_export.c				\
-			builtins/utils_unset.c builtins/execute_builtins.c
+			builtins/utils_unset.c builtins/execute_builtins.c \
+			check_for_unexpected_token.c
 
 OBJS	= $(SRCS:.c=.o)
 
