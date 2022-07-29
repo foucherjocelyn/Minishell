@@ -17,6 +17,5 @@ int	execute_builtins(char **argv, t_tab *tabs)
 		return(execute_builtin_env(tabs->env));
 	if (!ft_strcmp(argv[0], "cd"))
 		return(execute_builtin_cd(argv, tabs));
-	free(argv);
 	return (0);  
 }

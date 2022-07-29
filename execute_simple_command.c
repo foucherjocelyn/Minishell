@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <builtins.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -89,10 +90,10 @@ static void	execute_in_child(t_syntax_node **tree_root,
 		ft_putendl_fd(": command not found", 2);
 		close_standard_fds();
 		free(filepath);
-		free(argv);
-		delete_syntax_tree(tree_root);
 		g_status = 127;
 	}
+	free_2d_tab(&argv);
+	delete_syntax_tree(tree_root);
 	free_2d_tab(&(tabs->env));
 	free_2d_tab(&(tabs->exp));
 	exit(g_status);
