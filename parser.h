@@ -35,7 +35,7 @@ typedef struct s_syntax_node
 }t_syntax_node;
 
 t_syntax_node	*create_node(void);
-void			delete_syntax_tree(t_syntax_node *root);
+void			delete_syntax_tree(t_syntax_node **root);
 void			advance_to_next_command_argument(t_list **token);
 t_syntax_node	*parse_simple_command(t_list **token, char **envp);
 t_syntax_node	*parser(t_list *token, char **envp);

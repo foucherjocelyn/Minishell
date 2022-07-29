@@ -45,7 +45,7 @@ static char	**compose_argv(t_syntax_node *command_tree)
 	i = 0;
 	while (command_tree)
 	{
-		argv[i] = command_tree->left->token->value->buffer;
+		argv[i] = ft_strdup(command_tree->left->token->value->buffer);
 		command_tree = command_tree->right;
 		i++;
 	}
@@ -69,7 +69,7 @@ int	is_a_builtin(const char *command)
 	return (0);
 }
 
-static void	execute_in_child(t_syntax_node *tree_root,
+static void	execute_in_child(t_syntax_node **tree_root,
 		t_redirections *redirect, char **argv, t_tab *tabs)
 {
 	char	*filepath;
@@ -98,7 +98,7 @@ static void	execute_in_child(t_syntax_node *tree_root,
 	exit(g_status);
 }
 
-int	execute_simple_command(t_syntax_node *tree_root,
+int	execute_simple_command(t_syntax_node **tree_root,
 		t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
@@ -106,8 +106,12 @@ int	execute_simple_command(t_syntax_node *tree_root,
 	char	**argv;
 
 	argv = compose_argv(command_tree);
-	if (is_a_builtin(argv[0]) && tree_root->right == NULL)
-		return (execute_builtins(argv, tabs));
+	if (is_a_builtin(argv[0]) && (*tree_root)->right == NULL)
+	{
+		delete_syntax_tree(tree_root);
+		g_status = execute_builtins(argv, tabs);
+		return (0);
+	}
 	pid = fork();
 	if (pid == 0)
 		execute_in_child(tree_root, redirect, argv, tabs);

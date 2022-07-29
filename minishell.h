@@ -40,7 +40,7 @@ typedef struct s_tab
 	char	**exp;
 }	t_tab;
 
-int		execute_simple_command(t_syntax_node *tree_root,
+int		execute_simple_command(t_syntax_node **tree_root,
 			t_syntax_node *command_tree, t_redirections *redirect,
 			t_tab *tabs);
 void	close_standard_fds(void);

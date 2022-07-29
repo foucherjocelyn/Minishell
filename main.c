@@ -65,8 +65,8 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 			{
 				syntax_tree = parser(token_list, tabs->env);
 				ft_lstclear(&token_list, NULL);
-				executor(syntax_tree, tabs);
-				delete_syntax_tree(syntax_tree);
+				executor(&syntax_tree, tabs);
+				delete_syntax_tree(&syntax_tree);
 			}
 		}
 	}

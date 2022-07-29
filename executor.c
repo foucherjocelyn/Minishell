@@ -57,7 +57,7 @@ int	execute_redirection(t_syntax_node *command_tree)
 	return (0);
 }
 
-int	execute_command(t_syntax_node *tree_root, t_syntax_node *command_tree,
+int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
 	if (command_tree->right)
@@ -69,7 +69,7 @@ int	execute_command(t_syntax_node *tree_root, t_syntax_node *command_tree,
 	return (0);
 }
 
-void	execute_pipe(t_syntax_node *tree_root, t_syntax_node *command_tree,
+void	execute_pipe(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
 	assert(pipe(redirect->pipefd) != -1);
@@ -83,7 +83,7 @@ void	execute_pipe(t_syntax_node *tree_root, t_syntax_node *command_tree,
 	dup2(redirect->fdin, STDIN_FILENO);
 }
 
-void	execute_job(t_syntax_node *tree_root, t_syntax_node *command_tree,
+void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
 	int	wstatus;
@@ -97,22 +97,22 @@ void	execute_job(t_syntax_node *tree_root, t_syntax_node *command_tree,
 	{
 		execute_pipe(tree_root, command_tree, redirect, tabs);
 	}
-	wait(&wstatus);
-	if (WIFEXITED(wstatus))
-		g_status = WEXITSTATUS(wstatus);
+	if (wait(&wstatus) != -1)
+		if (WIFEXITED(wstatus))
+			g_status = WEXITSTATUS(wstatus);
 }
 
-void	executor(t_syntax_node *command_tree, t_tab *tabs)
+void	executor(t_syntax_node **tree_root, t_tab *tabs)
 {
 	t_redirections	redirect;
 
-	if (!command_tree)
+	if (!(*tree_root))
 		return ;
 	redirect.fdin = dup(STDIN_FILENO);
 	redirect.fdout = dup(STDOUT_FILENO);
 	redirect.pipefd[0] = -1;
 	redirect.pipefd[1] = -1;
-	execute_job(command_tree, command_tree, &redirect, tabs);
+	execute_job(tree_root, *tree_root, &redirect, tabs);
 	dup2(redirect.fdin, STDIN_FILENO);
 	dup2(redirect.fdout, STDOUT_FILENO);
 	close(redirect.fdin);

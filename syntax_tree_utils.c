@@ -24,15 +24,19 @@ t_syntax_node	*create_node(void)
 	return (node);
 }
 
-void	delete_syntax_tree(t_syntax_node *root)
+void	delete_syntax_tree(t_syntax_node **root)
 {
 	if (root)
 	{
-		destroy_token(root->token);
-		if (root->left)
-			delete_syntax_tree(root->left);
-		if (root->right)
-			delete_syntax_tree(root->right);
-		free(root);
+		if (*root)
+		{
+			destroy_token((*root)->token);
+			if ((*root)->left)
+				delete_syntax_tree(&((*root)->left));
+			if ((*root)->right)
+				delete_syntax_tree(&((*root)->right));
+			free(*root);
+			*root = NULL;
+		}
 	}
 }
