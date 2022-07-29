@@ -87,10 +87,10 @@ static void	execute_in_child(t_syntax_node **tree_root,
 			execve(filepath, argv, tabs->env);
 		ft_putstr_fd(argv[0], 2);
 		ft_putendl_fd(": command not found", 2);
-		close_standard_fds();
 		free(filepath);
 		g_status = 127;
 	}
+	close_standard_fds();
 	free_2d_tab(&argv);
 	delete_syntax_tree(tree_root);
 	free_2d_tab(&(tabs->env));
@@ -115,6 +115,6 @@ int	execute_simple_command(t_syntax_node **tree_root,
 	pid = fork();
 	if (pid == 0)
 		execute_in_child(tree_root, redirect, argv, tabs);
-	free(argv);
+	free_2d_tab(&argv);
 	return (0);
 }
