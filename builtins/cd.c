@@ -84,9 +84,9 @@ int	execute_builtin_cd(char **to_cd, t_tab *tabs)
 {
 	char	buf[PATH_MAX];
 	char	*real_pwd_path;
-	char	*getenv_pwd_path;
+//	char	*getenv_pwd_path;
 
-	getenv_pwd_path = ft_getenv(tabs->env, "PWD"); 
+//	getenv_pwd_path = ft_getenv(tabs->env, "PWD"); 
 	real_pwd_path = getcwd(buf, PATH_MAX);
 	if (!real_pwd_path)
 		return (strerror(errno), EXIT_SUCCESS);
@@ -97,7 +97,7 @@ int	execute_builtin_cd(char **to_cd, t_tab *tabs)
 	if (to_cd[1] && access(to_cd[1], F_OK))
 		return (
 			// printf("minishell: cd: %s: No such file or directory\n",
-				/*to_cd[1]), EXIT_FAILURE*/strerror(errno), 1);
+				/*to_cd[1]), EXIT_FAILURE*//*strerror(errno)*/perror("minishell: cd: "), 1);
 			// strerror(errno);
 	if (to_cd[1] && chdir(path_using_chdir(to_cd[1])) == -1)
 		// printf("minishell: cd: %s: Not a directory\n", to_cd[1]);
