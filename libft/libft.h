@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:24:35 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:26:06 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/01 12:41:49 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void			ft_vecremove(t_vector *vec, unsigned int first,
 					unsigned int last);
 int				ft_vecinsert(t_vector *vec, unsigned int index, void *items,
 					unsigned int nb_items);
+int				ft_isstrdigit(char *s);
 
 #endif
