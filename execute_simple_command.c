@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -84,11 +86,12 @@ static void	execute_in_child(t_syntax_node **tree_root,
 	{
 		filepath = get_filepath(argv[0], tabs->env);
 		if (filepath)
+		{
 			execve(filepath, argv, tabs->env);
-		ft_putstr_fd(argv[0], 2);
-		ft_putendl_fd(": command not found", 2);
-		free(filepath);
-		g_status = 127;
+			perror ("minishell");
+			g_status = 126;
+			free(filepath);
+		}
 	}
 	close_standard_fds();
 	free_2d_tab(&argv);

@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "libft.h"
@@ -33,10 +36,39 @@ char	*get_filepath(char *pathname, char **env)
 	char	*path;
 	char	**patharray;
 	int		i;
+	struct stat statbuf;
 
 	i = 0;
 	filepath = ft_strdup(pathname);
-	if (access(pathname, X_OK) == -1)
+	if (filepath[0] == '/' || (filepath[0] == '.' && filepath[1] == '/'))
+	{
+		stat(filepath, &statbuf);
+		if (access(filepath, F_OK))
+		{
+			perror ("minishell");
+			g_status = 127;
+			free(filepath);
+			filepath = NULL;
+		}
+		else if (!S_ISREG(statbuf.st_mode))
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(filepath, 2);
+			ft_putstr_fd(": ", 2);
+			ft_putendl_fd(strerror(EISDIR), 2);
+			g_status = 126;
+			free(filepath);
+			filepath = NULL;
+		}
+		else if (access(filepath, X_OK))
+		{
+			perror ("minishell");
+			g_status = 126;
+			free(filepath);
+			filepath = NULL;
+		}
+	}
+	else
 	{
 		path = ft_getenv(env, "PATH");
 		free(filepath);
@@ -49,6 +81,13 @@ char	*get_filepath(char *pathname, char **env)
 			free(filepath);
 			filepath = NULL;
 			i++;
+		}
+		if (!filepath)
+		{
+			ft_putendl_fd(": command not found", 2);
+			g_status = 127;
+			free(filepath);
+			filepath = NULL;
 		}
 		free(path);
 		free_2d_tab(&patharray);
