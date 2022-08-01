@@ -29,7 +29,7 @@ int	execute_redirection(t_syntax_node *command_tree)
 
 	if (command_tree->token->type == GREAT)
 	{
-		flags = O_CREAT | O_WRONLY;
+		flags = O_CREAT | O_WRONLY | O_TRUNC;
 		newfd = STDOUT_FILENO;
 	}
 	else if (command_tree->token->type == GREATGREAT)

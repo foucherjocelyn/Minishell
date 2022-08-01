@@ -35,18 +35,22 @@ static int	check_args(char **to_cd, char **env)
 	while (to_cd[i])
 		i++;
 	if (i > 2)
-		return (printf("minishell: cd: too many arguments\n"), EXIT_FAILURE);
+		return (ft_putstr_fd("minishell: cd: too many arguments\n", 2), EXIT_FAILURE);
 	if (i == 1)
 	{
 		if (found_name_without_value(env, "HOME") != -1)
 			return (EXIT_FAILURE);
 		path = ft_getenv(env, "HOME");
 		if (!path)
-			return (printf("minishell: cd: HOME not set\n"), EXIT_FAILURE);
+			return (ft_putstr_fd("minishell: cd: HOME not set\n", 2), EXIT_FAILURE);
 		else
 		{
 			if (chdir(path))
-				printf("minishell: cd: %s: Not a directory\n", path);
+			{
+				ft_putstr_fd("minishell: cd: ", 2);
+				ft_putstr_fd(path, 2);
+				ft_putstr_fd(": Not a directory\n", 2);
+			}
 			return (free(path), EXIT_FAILURE);
 		}
 	}
