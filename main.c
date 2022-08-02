@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/07/03 13:16:49 by lfchouch         ###   ########.fr       */
+/*   Updated: 2022/08/02 23:10:59 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
+	tabs.env = NULL;
+	tabs.exp = NULL;
 	tabs.env = cpy_exp(envp, tabs.env);
 	tabs.exp = cpy_exp(envp, tabs.exp);
 	g_status = 0;

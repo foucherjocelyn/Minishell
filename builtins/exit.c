@@ -6,10 +6,11 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:28:47 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/01 12:55:00 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/02 23:51:00 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "minishell.h"
 #include "../builtins.h"
 #include "libft.h"
@@ -21,12 +22,19 @@ static long long	ft_atoll(const char *nptr)
 
 	i = 0;
 	result = 0;
+	if (!ft_strcmp(nptr, "-9223372036854775808"))
+		return (LONG_MIN);
 	if (nptr[0] == '-' || nptr[0] == '+')
 		i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result *= 10;
 		result += nptr[i] - '0';
+		if (result < 0)
+		{
+			ft_putstr_fd("minishell: exit: numeric argument required", 2);
+			return (2);
+		}
 		i++;
 	}
 	if (nptr[i])
@@ -47,6 +55,11 @@ int	execute_builtin_exit(char **argv, t_tab *tabs)
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
 	printf("exit\n");
+	if (argv[1] && argv[2])
+	{
+		ft_putstr_fd("bash: exit: too many arguments", 2);
+		exit (1);
+	}
 	if (argv[1])
 	{
 		/*if (!ft_isstrdigit(argv[1]))
