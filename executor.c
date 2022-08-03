@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:08:53 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:03:08 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,12 @@ void	executor(t_syntax_node **tree_root, t_tab *tabs)
 	redirect.fdout = dup(STDOUT_FILENO);
 	redirect.pipefd[0] = -1;
 	redirect.pipefd[1] = -1;
-	execute_job(tree_root, *tree_root, &redirect, tabs);
+	if ((*tree_root)->right == NULL
+		&& (*tree_root)->left->left->left
+		&& is_a_builtin((*tree_root)->left->left->left->token->value->buffer))
+		execute_command(tree_root, (*tree_root)->left, &redirect, tabs);
+	else
+		execute_job(tree_root, *tree_root, &redirect, tabs);
 	dup2(redirect.fdin, STDIN_FILENO);
 	dup2(redirect.fdout, STDOUT_FILENO);
 	close(redirect.fdin);
