@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/03 02:42:06 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/03 07:03:11 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,8 @@ static void	execute_in_child(t_syntax_node **tree_root,
 		t_redirections *redirect, char **argv, t_tab *tabs)
 {
 	char	*filepath;
+	(void)redirect;
 
-	close(redirect->pipefd[0]);
-	close(redirect->pipefd[1]);
-	close(redirect->fdin);
-	close(redirect->fdout);
 	if (is_a_builtin(argv[0]))
 		g_status = execute_builtins(argv, tabs);
 	else
@@ -105,7 +102,6 @@ int	execute_simple_command(t_syntax_node **tree_root,
 		t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
-	pid_t	pid;
 	char	**argv;
 
 	argv = compose_argv(command_tree);
@@ -115,9 +111,7 @@ int	execute_simple_command(t_syntax_node **tree_root,
 		g_status = execute_builtins(argv, tabs);
 		return (0);
 	}
-	pid = fork();
-	if (pid == 0)
+	else
 		execute_in_child(tree_root, redirect, argv, tabs);
-	free_2d_tab(&argv);
 	return (0);
 }

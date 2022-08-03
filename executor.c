@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/03 03:03:08 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/03 07:02:59 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,66 +60,87 @@ int	execute_redirection(t_syntax_node *command_tree)
 int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
+	dup2(redirect->pipein[0], STDIN_FILENO);
+	dup2(redirect->pipeout[1], STDOUT_FILENO);
+	close(redirect->pipein[0]);
+	close(redirect->pipein[1]);
+	close(redirect->pipeout[0]);
+	close(redirect->pipeout[1]);
 	if (command_tree->right)
 		if (execute_redirection(command_tree->right) == -1)
 			return (-1);
 	if (command_tree->left)
 		execute_simple_command(tree_root, command_tree->left, redirect, tabs);
-	dup2(redirect->fdout, STDOUT_FILENO);
 	return (0);
-}
-
-void	execute_pipe(t_syntax_node **tree_root, t_syntax_node *command_tree,
-		t_redirections *redirect, t_tab *tabs)
-{
-	assert(pipe(redirect->pipefd) != -1);
-	dup2(redirect->pipefd[1], STDOUT_FILENO);
-	close(redirect->pipefd[1]);
-	execute_command(tree_root, command_tree->left, redirect, tabs);
-	dup2(redirect->fdout, STDOUT_FILENO);
-	dup2(redirect->pipefd[0], STDIN_FILENO);
-	close(redirect->pipefd[0]);
-	execute_job(tree_root, command_tree->right, redirect, tabs);
-	dup2(redirect->fdin, STDIN_FILENO);
 }
 
 void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
 {
-	int	wstatus;
+	int		wstatus;
+	pid_t	pid;
 
 	wstatus = 0;
 	if (command_tree->right == NULL)
 	{
-		execute_command(tree_root, command_tree->left, redirect, tabs);
+		redirect->pipein[0] = redirect->pipeout[0];
+		redirect->pipein[1] = redirect->pipeout[1];
+		redirect->pipeout[0] = -1;
+		redirect->pipeout[1] = -1;
+		pid = fork();
+		if (pid == 0)
+			execute_command(tree_root, command_tree->left, redirect, tabs);
+		else
+		{
+			close(redirect->pipein[0]);
+			close(redirect->pipein[1]);
+			if (waitpid(pid, &wstatus, 0) != -1)
+				if (WIFEXITED(wstatus))
+					g_status = WEXITSTATUS(wstatus);
+		}
 	}
 	else
 	{
-		execute_pipe(tree_root, command_tree, redirect, tabs);
+		redirect->pipein[0] = redirect->pipeout[0];
+		redirect->pipein[1] = redirect->pipeout[1];
+		pipe(redirect->pipeout);
+		pid = fork();
+		if (pid == 0)
+			execute_command(tree_root, command_tree->left, redirect, tabs);
+		else
+		{
+			close(redirect->pipein[0]);
+			close(redirect->pipein[1]);
+			execute_job(tree_root, command_tree->right, redirect, tabs);
+			wait (&wstatus);
+		}
 	}
-	if (wait(&wstatus) != -1)
-		if (WIFEXITED(wstatus))
-			g_status = WEXITSTATUS(wstatus);
 }
 
 void	executor(t_syntax_node **tree_root, t_tab *tabs)
 {
 	t_redirections	redirect;
+	int				save_fdin;
+	int				save_fdout;
 
 	if (!(*tree_root))
 		return ;
-	redirect.fdin = dup(STDIN_FILENO);
-	redirect.fdout = dup(STDOUT_FILENO);
-	redirect.pipefd[0] = -1;
-	redirect.pipefd[1] = -1;
+	redirect.fdin = STDIN_FILENO;
+	redirect.fdout = STDOUT_FILENO;
+	redirect.pipein[0] = -1;
+	redirect.pipein[1] = -1;
+	redirect.pipeout[0] = -1;
+	redirect.pipeout[1] = -1;
 	if ((*tree_root)->right == NULL
 		&& (*tree_root)->left->left->left
 		&& is_a_builtin((*tree_root)->left->left->left->token->value->buffer))
+	{
+		save_fdin = dup(STDIN_FILENO);
+		save_fdout = dup(STDOUT_FILENO);
 		execute_command(tree_root, (*tree_root)->left, &redirect, tabs);
+		dup2(save_fdin, STDIN_FILENO);
+		dup2(save_fdout, STDOUT_FILENO);
+	}
 	else
 		execute_job(tree_root, *tree_root, &redirect, tabs);
-	dup2(redirect.fdin, STDIN_FILENO);
-	dup2(redirect.fdout, STDOUT_FILENO);
-	close(redirect.fdin);
-	close(redirect.fdout);
 }
