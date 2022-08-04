@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/03 07:38:06 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/04 04:47:04 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 			return (-1);
 		}
 	if (command_tree->left)
-		execute_simple_command(tree_root, command_tree->left, redirect, tabs);
+		execute_simple_command(tree_root, command_tree->left, tabs);
 	return (0);
 }
 

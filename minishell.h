@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:54 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/03 06:04:49 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/04 04:46:15 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ typedef struct s_tab
 }	t_tab;
 
 int		execute_simple_command(t_syntax_node **tree_root,
-			t_syntax_node *command_tree, t_redirections *redirect,
-			t_tab *tabs);
+			t_syntax_node *command_tree, t_tab *tabs);
 void	close_standard_fds(void);
 int		check_for_unexpected_token(t_list *token_list);
 #endif
