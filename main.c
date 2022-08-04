@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/02 23:10:59 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/04 03:43:11 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,10 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 		if (token_list)
 		{
 			if (check_for_unexpected_token(token_list) == -1)
+			{
+				g_status = 2;
 				ft_lstclear(&token_list, NULL);
+			}
 			else
 			{
 				syntax_tree = parser(token_list, tabs->env);
