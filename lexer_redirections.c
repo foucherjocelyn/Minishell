@@ -6,11 +6,10 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 03:15:32 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/15 03:15:33 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:55:07 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lexer.h"
 
 t_token	*take_greatgreat(char **iter)

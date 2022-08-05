@@ -6,11 +6,10 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/07/26 01:28:58 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:54:33 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "minishell.h"
 #include "lexer.h"
 
@@ -97,6 +96,11 @@ t_list	*lexer(char *line)
 				token = take_redirection(&iter);
 			else
 				token = take_word(&iter);
+			if (!token)
+			{
+				ft_lstclear(&token_list, NULL);
+				return (NULL);
+			}
 			ft_lstadd_back(&token_list, ft_lstnew(token));
 		}
 	}

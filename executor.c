@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/04 04:47:04 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/04 05:12:42 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,11 @@ void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 	pid_t	pid;
 
 	wstatus = 0;
+	redirect->pipein[0] = redirect->pipeout[0];
+	redirect->pipein[1] = redirect->pipeout[1];
+	// if last command in pipeline
 	if (command_tree->right == NULL)
 	{
-		redirect->pipein[0] = redirect->pipeout[0];
-		redirect->pipein[1] = redirect->pipeout[1];
 		redirect->pipeout[0] = -1;
 		redirect->pipeout[1] = -1;
 		pid = fork();
@@ -104,8 +105,6 @@ void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 	}
 	else
 	{
-		redirect->pipein[0] = redirect->pipeout[0];
-		redirect->pipein[1] = redirect->pipeout[1];
 		pipe(redirect->pipeout);
 		pid = fork();
 		if (pid == 0)

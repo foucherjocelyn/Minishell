@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:54 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/04 04:46:15 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:54:00 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <linux/limits.h>
 # include <string.h>
 # include <signal.h>
-# include "libft.h"
+# include "libft/libft.h"
 # include "lexer.h"
 # include "parser.h"
 

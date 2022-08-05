@@ -6,14 +6,13 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:28:47 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/02 23:51:00 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:55:44 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include "minishell.h"
 #include "../builtins.h"
-#include "libft.h"
 
 static long long	ft_atoll(const char *nptr)
 {

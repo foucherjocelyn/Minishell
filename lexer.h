@@ -6,13 +6,13 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:50 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:10:51 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:53:35 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
-# include "libft.h"
+# include "libft/libft.h"
 
 enum	e_token_type
 {

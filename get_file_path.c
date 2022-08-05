@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:58 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:08:59 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 08:57:34 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "libft.h"
 #include "builtins.h"
 
 static char	*ft_strjoin_with_slash(char *s1, char *s2)

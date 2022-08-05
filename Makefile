@@ -1,25 +1,25 @@
-CFLAGS	?= -Wall -Werror -Wextra
+CFLAGS	?= -Wall -Werror -Wextra -MMD -MP
 LDFLAGS ?=
 
-OBJS	= main.o lexer.o parser.o executor.o execute_simple_command.o \
-			destroy_token.o lexer_redirections.o lexer_quotes.o \
-			expand_variables.o expand_quotes.o syntax_tree_utils.o \
-			parse_simple_command.o builtins/cd.o builtins/echo.o	\
-			builtins/env.o builtins/exit.o builtins/export.o		\
-			builtins/pwd.o builtins/unset.o builtins/utils.o		\
-			builtins/utils_cd.o	builtins/utils_export.o				\
-			builtins/utils_unset.o builtins/execute_builtins.o	\
-			check_for_unexpected_token.o close_standard_fds.o \
-			create_token.o get_token.o get_file_path.o
+SRCS	= main.c lexer.c parser.c executor.c execute_simple_command.c \
+			destroy_token.c lexer_redirections.c lexer_quotes.c \
+			expand_variables.c expand_quotes.c syntax_tree_utils.c \
+			parse_simple_command.c builtins/cd.c builtins/echo.c	\
+			builtins/env.c builtins/exit.c builtins/export.c		\
+			builtins/pwd.c builtins/unset.c builtins/utils.c		\
+			builtins/utils_cd.c	builtins/utils_export.c				\
+			builtins/utils_unset.c builtins/execute_builtins.c	\
+			check_for_unexpected_token.c close_standard_fds.c \
+			create_token.c get_token.c get_file_path.c
+
+DEPS	:= $(SRCS:%.c=%.d)
+OBJS	:= $(DEPS:.d=.o)
 
 NAME		= minishell
 
 LIBFT		= libft/libft.a
 
 all:	$(NAME)
-
-%.o : %.c
-	$(CC) -c $(CFLAGS) -I libft -I. $< -o $@
 
 $(LIBFT):
 	$(MAKE) -C libft
@@ -29,11 +29,14 @@ $(NAME):	$(LIBFT) $(OBJS)
 
 clean:
 	$(MAKE) fclean -C libft
+	rm -rf $(DEPS)
 	rm -rf $(OBJS)
 
 fclean:	clean
 	rm -f $(NAME)
 
 re: fclean all
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re
