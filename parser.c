@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:14 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:09:19 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:25:04 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "parser.h"
 #include "expander.h"
 
-void	advance_to_next_command_argument(t_list **token)
+void	advance_to_next_command_argument(t_dlist **token)
 {
 	while (*token && get_token(*token)->type != PIPE)
 	{
@@ -33,7 +33,7 @@ void	advance_to_next_command_argument(t_list **token)
 	}
 }
 
-t_syntax_node	*parse_redirection(t_list **token, char **envp)
+t_syntax_node	*parse_redirection(t_dlist **token, char **envp)
 {
 	t_syntax_node	*node;
 
@@ -57,10 +57,10 @@ t_syntax_node	*parse_redirection(t_list **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parse_command(t_list **token, char **envp)
+t_syntax_node	*parse_command(t_dlist **token, char **envp)
 {
 	t_syntax_node	*node;
-	t_list			*head_token;
+	t_dlist			*head_token;
 
 	node = create_node();
 	node->type = COMMAND;
@@ -80,7 +80,7 @@ t_syntax_node	*parse_command(t_list **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parse_job(t_list **token, char **envp)
+t_syntax_node	*parse_job(t_dlist **token, char **envp)
 {
 	t_syntax_node	*node;
 
@@ -99,7 +99,7 @@ t_syntax_node	*parse_job(t_list **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parser(t_list *token, char **envp)
+t_syntax_node	*parser(t_dlist *token, char **envp)
 {
 	t_syntax_node	*node;
 

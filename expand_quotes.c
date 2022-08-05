@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer_quotes.c                                     :+:      :+:    :+:   */
+/*   expand_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 03:18:40 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/15 03:18:40 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:45:08 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	expand_double_quote(t_vector *value, int *iter, char **envp)
 	ft_vecremove((value), *iter, *iter);
 }
 
-void	word_splitting(t_list **tokens, t_vector **word,
+void	word_splitting(t_dlist **tokens, t_vector **word,
 		int begin, int *iter)
 {
 	t_token		*new;
-	t_list		*new_lst_elem;
+	t_dlist		*new_lst_elem;
 
 	while (begin < *iter)
 	{
@@ -53,7 +53,7 @@ void	word_splitting(t_list **tokens, t_vector **word,
 			ft_vecadd(new->value, "\0");
 			ft_vecremove(*word, begin, (*word)->length - 1);
 			ft_vecadd(*word, "\0");
-			new_lst_elem = ft_lstnew(new);
+			new_lst_elem = ft_dlstnew(new);
 			new_lst_elem->next = (*tokens)->next;
 			(*tokens)->next = new_lst_elem;
 			(*tokens) = (*tokens)->next;
@@ -65,7 +65,7 @@ void	word_splitting(t_list **tokens, t_vector **word,
 	}
 }
 
-void	expander(t_list **tokens, t_vector *word, char **envp)
+void	expander(t_dlist **tokens, t_vector *word, char **envp)
 {
 	int	i;
 	int	index_before_expansion;

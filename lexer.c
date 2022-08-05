@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 08:54:33 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:44:36 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ static	int check_for_unclosed_quotes(char *line)
 	return (0);
 }
 
-t_list	*lexer(char *line)
+t_dlist	*lexer(char *line)
 {
-	t_list	*token_list;
+	t_dlist	*token_list;
 	char	*iter;
 	t_token	*token;
 
@@ -98,10 +98,10 @@ t_list	*lexer(char *line)
 				token = take_word(&iter);
 			if (!token)
 			{
-				ft_lstclear(&token_list, NULL);
+				ft_dlstclear(&token_list, NULL);
 				return (NULL);
 			}
-			ft_lstadd_back(&token_list, ft_lstnew(token));
+			ft_dlstadd_back(&token_list, ft_dlstnew(token));
 		}
 	}
 	return (token_list);

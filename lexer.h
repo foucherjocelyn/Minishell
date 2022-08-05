@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:50 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 08:53:35 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:24:37 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_token
 	t_vector			*value;
 }t_token;
 
-t_token		*get_token(t_list *elem);
-t_list		*lexer(char *line);
+t_token		*get_token(t_dlist *elem);
+t_dlist		*lexer(char *line);
 void		destroy_token(t_token *token);
 t_token		*create_token(enum e_token_type type);
 t_token		*take_greatgreat(char **iter);

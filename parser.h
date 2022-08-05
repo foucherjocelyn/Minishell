@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:59 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/11 10:11:04 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:23:50 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_syntax_node
 
 t_syntax_node	*create_node(void);
 void			delete_syntax_tree(t_syntax_node **root);
-void			advance_to_next_command_argument(t_list **token);
-t_syntax_node	*parse_simple_command(t_list **token, char **envp);
-t_syntax_node	*parser(t_list *token, char **envp);
+void			advance_to_next_command_argument(t_dlist **token);
+t_syntax_node	*parse_simple_command(t_dlist **token, char **envp);
+t_syntax_node	*parser(t_dlist *token, char **envp);
 #endif

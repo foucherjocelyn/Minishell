@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.h                                         :+:      :+:    :+:   */
+/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 00:01:58 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 10:25:00 by jfoucher         ###   ########.fr       */
+/*   Created: 2022/08/05 10:27:59 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/08/05 10:28:36 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPANDER_H
-# define EXPANDER_H
-# include "libft/libft.h"
-# include "minishell.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int		expand_variable(t_vector *word, int *iter, char **envp);
-void	expander(t_dlist **tokens, t_vector *word, char **envp);
-#endif
+t_dlist	*ft_dlstnew(void *content)
+{
+	t_dlist	*result;
+
+	result = malloc(sizeof(t_dlist));
+	result->content = content;
+	result->prev = NULL;
+	result->next = NULL;
+	return (result);
+}

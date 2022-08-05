@@ -6,13 +6,13 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:03:11 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/04 03:45:05 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:24:03 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	check_for_unexpected_pipe(t_list *token_list)
+static int	check_for_unexpected_pipe(t_dlist *token_list)
 {
 	if (get_token(token_list)->type == PIPE)
 		return (-1);
@@ -34,7 +34,7 @@ static void	print_syntax_error(char *token_str)
 	ft_putstr_fd("'\n", 2);
 }
 
-int	check_for_unexpected_token(t_list *token_list)
+int	check_for_unexpected_token(t_dlist *token_list)
 {
 	if (check_for_unexpected_pipe(token_list) != 0)
 	{
