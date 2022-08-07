@@ -59,6 +59,9 @@ char	*to_find(char *to_change)
 
 	i = -1;
 	res = malloc(ft_strlen(to_change) + 1);
+	if (!res)
+		return (printf("Malloc failed, can't change the value of %s\n",
+			to_change), NULL);
 	while (to_change[++i] != '=')
 		res[i] = to_change[i];
 	res[i] = 0;
@@ -89,6 +92,8 @@ int	execute_builtin_export(t_tab *tabs, char **to_export)
 			change_value(&tabs->exp[found_export_name_with_value(tabs->exp, to_export[index[1]])], to_export[index[1]]);
 			// display(tabs->env);
 			to_free = to_find(to_export[index[1]]);
+			if (!to_free)
+				return (EXIT_FAILURE);
 			if (found_name(tabs->env, to_free) != -1)
 				change_value(&tabs->env[found_export_name_with_value(tabs->env, to_export[index[1]])], to_export[index[1]]);
 			else

@@ -46,50 +46,6 @@ int	found_name_with_value(char **exp, char *to_find)
 	return (-1);
 }
 
-// int	deal_with_oldpwd(t_tab *tabs, char *former_pwd_path)
-// {
-// 	char	**to_change;
-
-// 	if (found_name_with_value(tabs->env, "OLDPWD") == -1)
-// 		return (EXIT_FAILURE);
-// 	to_change = malloc(sizeof(char *) * 3);
-// 	if (!to_change)
-// 		return (printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-// 	to_change[0] = malloc(2);
-// 	if (!to_change[0])
-// 		return (free(to_change),
-// 			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-// 	to_change[0][0] = 'u';
-// 	to_change[0][1] = '\0';
-// 	to_change[1] = malloc(PATH_MAX);
-// 	if (!to_change[1])
-// 		return (free(to_change[0]), free(to_change),
-// 			printf("\e[30;101mOLDPWD n a pas ete mis a jour\n\e[0m"), 1);
-// 	to_change[1] = NULL;
-// 	to_change[1] = ft_strcat(to_change[1], "OLDPWD");
-// 	to_change[2] = NULL;
-// 	display(to_change);
-// 	if (former_pwd_path != NULL)
-// 	{
-
-// 		execute_builtin_unset(tabs, to_change);
-
-// 		to_change[1] = ft_strcat(to_change[1], "=");
-
-// 		display(to_change);
-// 		to_change[1] = ft_strcat(to_change[1], former_pwd_path);
-
-// 		// free(former_pwd_path);
-// 		execute_builtin_export(tabs, to_change);
-// 	}
-// 	else
-// 	{
-
-// 		execute_builtin_unset(tabs, to_change);
-// 	}
-// 	return (free_2d_tab(&to_change), EXIT_SUCCESS);
-// }
-
 static void	change_oldpwd_value(char **to_change, char *to_cd)
 {
 	int	i;
