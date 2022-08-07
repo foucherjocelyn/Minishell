@@ -54,30 +54,3 @@ char	**cpy_env_extend(char **env, char **to_export)
 	cpy_env_extended[i] = 0;
 	return (cpy_env_extended);
 }
-
-// char	*ft_strdup_export(char *src, int i, int j)
-// {
-// 	char	*str;
-
-// 	str = malloc(ft_strlen(src) + 3);
-// 	if (!str)
-// 		return (printf("\e[1;31Copy failed\n\e[0m"), NULL);
-// 	while (src[i])
-// 	{
-// 		if (src[i] == '=')
-// 			break ;
-// 		str[j++] = src[i++];
-// 	}
-// 	if (src[i] == '=')
-// 	{
-// 		str[j++] = '=';
-// 		str[j++] = '"';
-// 		i++;
-// 	}
-// 	while (src[i])
-// 		str[j++] = src[i++];
-// 	if (i != j)
-// 		str[j++] = '"';
-// 	str[j] = '\0';
-// 	return (str);
-// }
