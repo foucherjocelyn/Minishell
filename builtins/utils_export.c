@@ -54,3 +54,28 @@ char	**cpy_env_extend(char **env, char **to_export)
 	cpy_env_extended[i] = 0;
 	return (cpy_env_extended);
 }
+
+int	display_export_error(int error_count, char *error)
+{
+	ft_putstr_fd("minishell: export: '", 2);
+	ft_putstr_fd(error, 2);
+	ft_putendl_fd("': not a valid identifier", 2);
+	error_count++;
+	return (error_count);
+}
+
+char	*to_find(char *to_change)
+{
+	int		i;
+	char	*res;
+
+	i = -1;
+	res = malloc(ft_strlen(to_change) + 1);
+	if (!res)
+		return (printf("Malloc failed, can't change the value of %s\n",
+				to_change), NULL);
+	while (to_change[++i] != '=')
+		res[i] = to_change[i];
+	res[i] = 0;
+	return (res);
+}
