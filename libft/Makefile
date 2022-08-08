@@ -1,4 +1,4 @@
-CFLAGS		?= -Wall -Werror -Wextra -MMD -MP
+CFLAGS		?= -Wall -Werror -Wextra -MMD -MP -g
 LDFLAGS		?=
 SRCS		:= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		  ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c \

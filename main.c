@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 10:33:14 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 01:51:40 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 			}
 			else
 			{
-				syntax_tree = parser(token_list, tabs->env);
+				syntax_tree = parser(&token_list, tabs->env);
 				ft_dlstclear(&token_list, NULL);
 				executor(&syntax_tree, tabs);
 				delete_syntax_tree(&syntax_tree);
