@@ -17,7 +17,7 @@
 static long long	ft_atoll(const char *nptr)
 {
 	long long	result;
-	int	i;
+	int			i;
 
 	i = 0;
 	result = 0;
@@ -28,19 +28,16 @@ static long long	ft_atoll(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result *= 10;
-		result += nptr[i] - '0';
+		result += nptr[i++] - '0';
 		if (result < 0)
 		{
 			ft_putstr_fd("minishell: exit: numeric argument required", 2);
 			return (2);
 		}
-		i++;
 	}
 	if (nptr[i])
-	{
-		ft_putstr_fd("minishell: exit: numeric argument required", 2);
-		return (2);
-	}
+		return (ft_putstr_fd("minishell: exit: numeric argument required", 2),
+			2);
 	if (nptr[0] == '-')
 		result = -result;
 	return (result);

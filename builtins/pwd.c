@@ -13,7 +13,6 @@ int	execute_builtin_pwd(void)
 
 	if (getcwd(buf, PATH_MAX))
 		return (ft_putendl_fd(buf, 1), EXIT_SUCCESS);
-	// pwd_not_found();
 	perror("pwd: error retrieving current directory");
 	return (EXIT_FAILURE);
 }

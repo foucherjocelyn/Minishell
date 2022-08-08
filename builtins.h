@@ -39,5 +39,7 @@ void	display(char **display);
 int		len_env(char **env);
 int		found_name(char **env, char *to_find);
 int		execute_builtins(char **argv, t_tab *tabs);
+int	    display_export_error(int error_count, char *error);
+char	*to_find(char *to_change);
 
 #endif

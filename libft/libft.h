@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:24:35 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 08:32:12 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:43:21 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }t_list;
+
+typedef struct s_dlist
+{
+	void			*content;
+	struct s_dlist	*prev;
+	struct s_dlist	*next;
+}t_dlist;
 
 typedef struct s_vector
 {
@@ -73,6 +80,11 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void*));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
+t_dlist			*ft_dlstlast(t_dlist *lst);
+t_dlist			*ft_dlstnew(void *content);
+void			ft_dlstadd_back(t_dlist **lst, t_dlist *new);
+void			ft_dlstdelone(t_dlist *lst, void (*del)(void*));
+void			ft_dlstclear(t_dlist **lst, void (*del)(void*));
 t_vector		ft_veccreate(size_t capacity, size_t item_size);
 void			ft_vecdestroy(t_vector *vec);
 int				ft_vecset(t_vector vec, unsigned int index, void *item);

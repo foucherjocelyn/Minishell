@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:54 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 08:54:00 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:24:32 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ typedef struct s_tab
 int		execute_simple_command(t_syntax_node **tree_root,
 			t_syntax_node *command_tree, t_tab *tabs);
 void	close_standard_fds(void);
-int		check_for_unexpected_token(t_list *token_list);
+int		check_for_unexpected_token(t_dlist *token_list);
 #endif

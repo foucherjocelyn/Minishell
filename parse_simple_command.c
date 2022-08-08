@@ -6,13 +6,13 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 12:26:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/23 12:26:42 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/05 10:24:23 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_syntax_node	*parse_token_list(t_list **token, char **envp)
+t_syntax_node	*parse_token_list(t_dlist **token, char **envp)
 {
 	t_syntax_node	*node;
 
@@ -30,7 +30,7 @@ t_syntax_node	*parse_token_list(t_list **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parse_simple_command(t_list **token, char **envp)
+t_syntax_node	*parse_simple_command(t_dlist **token, char **envp)
 {
 	t_syntax_node	*node;
 

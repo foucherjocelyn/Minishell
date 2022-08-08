@@ -55,29 +55,27 @@ char	**cpy_env_extend(char **env, char **to_export)
 	return (cpy_env_extended);
 }
 
-// char	*ft_strdup_export(char *src, int i, int j)
-// {
-// 	char	*str;
+int	display_export_error(int error_count, char *error)
+{
+	ft_putstr_fd("minishell: export: '", 2);
+	ft_putstr_fd(error, 2);
+	ft_putendl_fd("': not a valid identifier", 2);
+	error_count++;
+	return (error_count);
+}
 
-// 	str = malloc(ft_strlen(src) + 3);
-// 	if (!str)
-// 		return (printf("\e[1;31Copy failed\n\e[0m"), NULL);
-// 	while (src[i])
-// 	{
-// 		if (src[i] == '=')
-// 			break ;
-// 		str[j++] = src[i++];
-// 	}
-// 	if (src[i] == '=')
-// 	{
-// 		str[j++] = '=';
-// 		str[j++] = '"';
-// 		i++;
-// 	}
-// 	while (src[i])
-// 		str[j++] = src[i++];
-// 	if (i != j)
-// 		str[j++] = '"';
-// 	str[j] = '\0';
-// 	return (str);
-// }
+char	*to_find(char *to_change)
+{
+	int		i;
+	char	*res;
+
+	i = -1;
+	res = malloc(ft_strlen(to_change) + 1);
+	if (!res)
+		return (printf("Malloc failed, can't change the value of %s\n",
+				to_change), NULL);
+	while (to_change[++i] != '=')
+		res[i] = to_change[i];
+	res[i] = 0;
+	return (res);
+}
