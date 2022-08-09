@@ -37,6 +37,9 @@ fclean:	clean
 
 re: fclean all
 
+malloc_test: $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -fsanitize=undefined -rdynamic $(OBJS) -o $@ -lncurses -lreadline -I libft -I. libft/libft.a -L. -lmallocator
+
 -include $(DEPS)
 
 .PHONY: all clean fclean re

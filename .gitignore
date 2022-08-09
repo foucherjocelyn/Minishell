@@ -5,3 +5,7 @@ minishell
 *tests
 *tester
 .*
+malloc_test
+*.tmp
+google_doc
+ft_mallocator

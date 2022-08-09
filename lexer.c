@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 12:16:43 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:22:46 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static t_token	*take_pipe(char **iter)
 t_dlist	*lexer(char *iter)
 {
 	t_dlist	*token_list;
+	t_dlist	*new;
 	t_token	*token;
 
 	token_list = NULL;
@@ -82,7 +83,14 @@ t_dlist	*lexer(char *iter)
 				g_status = 2;
 				return (NULL);
 			}
-			ft_dlstadd_back(&token_list, ft_dlstnew(token));
+			new = ft_dlstnew(token);
+			if (!new)
+			{
+				ft_dlstclear(&token_list, (void*)destroy_token);
+				g_status = 2;
+				return (NULL);
+			}
+			ft_dlstadd_back(&token_list, new);
 		}
 	}
 	return (token_list);
