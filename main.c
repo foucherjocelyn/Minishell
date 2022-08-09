@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 03:14:18 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 05:09:01 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,35 +73,27 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 	t_dlist			*token_list;
 	t_syntax_node	*syntax_tree;
 
-	if (line[0] == '\0')
-		free(line);
-	else
+	add_history(line);
+	if (check_for_unclosed_quotes(line) == 0)
 	{
-		add_history(line);
-		if (check_for_unclosed_quotes(line) == -1)
-		{
-			g_status = 2;
-			free(line);
-			return;
-		}
 		token_list = lexer(line);
 		free(line);
-		if (token_list)
+		if (!token_list)
+			return ;
+		if (check_for_unexpected_token(token_list) == 0)
 		{
-			if (check_for_unexpected_token(token_list) == -1)
-			{
-				g_status = 2;
-				ft_dlstclear(&token_list, NULL);
-			}
-			else
-			{
-				syntax_tree = parser(&token_list, tabs->env);
-				ft_dlstclear(&token_list, NULL);
-				executor(&syntax_tree, tabs);
-				delete_syntax_tree(&syntax_tree);
-			}
+			syntax_tree = parser(&token_list, tabs->env);
+			ft_dlstclear(&token_list, NULL);
+			executor(&syntax_tree, tabs);
+			delete_syntax_tree(&syntax_tree);
+			return ;
 		}
+		else
+			ft_dlstclear(&token_list, NULL);
 	}
+	else
+		free(line);
+	g_status = 2;
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -119,7 +111,10 @@ int	main(int argc, char **argv, char **envp)
 	line = readline("$ ");
 	while (line)
 	{
-		parse_and_execute_line(line, &tabs);
+		if (line[0] == '\0')
+			free(line);
+		else
+			parse_and_execute_line(line, &tabs);
 		line = readline("$ ");
 	}
 	close_standard_fds();
