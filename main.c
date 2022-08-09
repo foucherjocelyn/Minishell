@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 01:51:40 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 03:14:18 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,29 @@ static char	**cpy_exp(char **env, char **cpy)
 	return (cpy);
 }
 
+static int	check_for_unclosed_quotes(char *line)
+{
+	while (*line)
+	{
+		if (*line == '\'')
+		{
+			line = ft_strchr(line + 1, '\'');
+			if (line == NULL)
+				return (ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `''\n", 2), -1);
+		}
+		else if (*line == '\"')
+		{
+			line = ft_strchr(line + 1, '\"');
+			if (line == NULL)
+				return (ft_putstr_fd("minishell: unexpected EOF "
+						"while looking for matching `\"'\n", 2), -1);
+		}
+		line++;
+	}
+	return (0);
+}
+
 void	parse_and_execute_line(char *line, t_tab *tabs)
 {
 	t_dlist			*token_list;
@@ -55,6 +78,12 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 	else
 	{
 		add_history(line);
+		if (check_for_unclosed_quotes(line) == -1)
+		{
+			g_status = 2;
+			free(line);
+			return;
+		}
 		token_list = lexer(line);
 		free(line);
 		if (token_list)
