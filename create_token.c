@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 02:57:17 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/06/15 02:57:19 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:21:18 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ t_token	*create_token(enum e_token_type type)
 
 	new_token = malloc(sizeof(t_token));
 	if (!new_token)
+	{
+		perror ("minishell");
 		return (NULL);
+	}
 	new_token->type = type;
 	new_token->value = malloc(sizeof(t_vector));
 	*(new_token->value) = ft_veccreate(1, sizeof(char));

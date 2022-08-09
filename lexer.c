@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 03:15:58 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:16:43 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,17 @@ static t_token	*take_pipe(char **iter)
 	token = create_token(PIPE);
 	if (!token)
 		return (NULL);
-	ft_vecadd(token->value, *iter);
-	ft_vecadd(token->value, "\0");
-	(*iter)++;
-	return (token);
+	if (ft_vecadd(token->value, *iter) == 0)
+	{
+		if (ft_vecadd(token->value, "\0") == 0)
+		{
+			(*iter)++;
+			return (token);
+		}
+	}
+	perror("minishell");
+	destroy_token(token);
+	return (NULL);
 }
 
 t_dlist	*lexer(char *iter)
@@ -71,7 +78,8 @@ t_dlist	*lexer(char *iter)
 				token = take_word(&iter);
 			if (!token)
 			{
-				ft_dlstclear(&token_list, NULL);
+				ft_dlstclear(&token_list, (void*)destroy_token);
+				g_status = 2;
 				return (NULL);
 			}
 			ft_dlstadd_back(&token_list, ft_dlstnew(token));
