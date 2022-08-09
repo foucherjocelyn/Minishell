@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 05:09:01 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 09:53:32 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 
 int	g_status;
 
-static char	**cpy_exp(char **env, char **cpy)
+static char	**cpy_exp(char **env)
 {
 	int		i;
+	char	**cpy;
 
 	i = 0;
 	cpy = malloc(sizeof(char *) * (len_env(env) + 1000));
@@ -103,10 +104,8 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	tabs.env = NULL;
-	tabs.exp = NULL;
-	tabs.env = cpy_exp(envp, tabs.env);
-	tabs.exp = cpy_exp(envp, tabs.exp);
+	tabs.env = cpy_exp(envp);
+	tabs.exp = cpy_exp(envp);
 	g_status = 0;
 	line = readline("$ ");
 	while (line)
