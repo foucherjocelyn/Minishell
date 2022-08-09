@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/04 04:45:38 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 02:46:04 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	execute_simple_command(t_syntax_node **tree_root,
 	{
 		delete_syntax_tree(tree_root);
 		g_status = execute_builtins(argv, tabs);
+		free_2d_tab(&argv);
 		return (0);
 	}
 	else

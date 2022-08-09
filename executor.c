@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/04 05:12:42 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 02:43:54 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ void	executor(t_syntax_node **tree_root, t_tab *tabs)
 		execute_command(tree_root, (*tree_root)->left, &redirect, tabs);
 		dup2(save_fdin, STDIN_FILENO);
 		dup2(save_fdout, STDOUT_FILENO);
+		close(save_fdin);
+		close(save_fdout);
 	}
 	else
 		execute_job(tree_root, *tree_root, &redirect, tabs);

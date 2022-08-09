@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:14 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 01:55:31 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 02:39:53 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,19 @@ t_syntax_node	*parse_command(t_dlist **token, char **envp)
 	return (node);
 }
 
-t_syntax_node	*parse_job(t_dlist **token, char **envp)
+t_syntax_node	*parse_job(t_dlist *token, char **envp)
 {
 	t_syntax_node	*node;
 
 	node = create_node();
 	node->type = JOB;
-	node->left = parse_command(token, envp);
-	if ((*token))
+	node->left = parse_command(&token, envp);
+	if ((token))
 	{
-		if (get_token(*token)->type == PIPE)
+		if (get_token(token)->type == PIPE)
 		{
-			node->token = get_token(*token);
-			(*token) = (*token)->next;
+			node->token = get_token(token);
+			(token) = (token)->next;
 			node->right = parse_job(token, envp);
 		}
 	}
@@ -135,6 +135,6 @@ t_syntax_node	*parser(t_dlist **head_token, char **envp)
 	remove_empty_tokens(head_token);
 	if (!(*head_token))
 		return (NULL);
-	node = parse_job(head_token, envp);
+	node = parse_job(*head_token, envp);
 	return (node);
 }
