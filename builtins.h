@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:20:11 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/07/05 16:20:12 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 06:51:44 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		execute_builtin_pwd(void);
 void	pwd_not_found(void);
 int		execute_builtin_unset(t_tab *tabs, char **unset);
 int		found_name_with_value(char **exp, char *to_find);
-int	    deal_with_oldpwd(t_tab *tabs, char *real_pwd_path, char *getenv_pwd_path);
+int		deal_with_oldpwd(t_tab *tabs, char *real_pwd_path,
+			char *getenv_pwd_path);
 int		deal_with_pwd(t_tab *tabs);
 char	*ft_strdup_export(char *src, int i, int j);
 char	**cpy_env_extend(char **env, char **to_export);
@@ -39,7 +40,7 @@ void	display(char **display);
 int		len_env(char **env);
 int		found_name(char **env, char *to_find);
 int		execute_builtins(char **argv, t_tab *tabs);
-int	    display_export_error(int error_count, char *error);
+int		display_export_error(int error_count, char *error);
 char	*to_find(char *to_change);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:54 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 10:24:32 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 06:52:37 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_redirections
 	int	fdin;
 	int	fdout;
 	int	pipein[2];
-	int pipeout[2];
+	int	pipeout[2];
 }t_redirections;
 
 typedef struct s_tab

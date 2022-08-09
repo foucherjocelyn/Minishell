@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:14 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 02:39:53 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 06:49:50 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	remove_empty_tokens(t_dlist **head_token)
 	while (token)
 	{
 		next = token->next;
-		if (get_token(token)->type == WORD 
+		if (get_token(token)->type == WORD
 			&& ((char *)(get_token(token)->value->buffer))[0] == '\0')
 		{
 			if ((token)->prev)
@@ -113,7 +113,7 @@ void	remove_empty_tokens(t_dlist **head_token)
 				(token)->next->prev = (token)->prev;
 			destroy_token(get_token(token));
 			ft_dlstdelone(token, NULL);
-		 	token = NULL;
+			token = NULL;
 		}
 		token = next;
 	}

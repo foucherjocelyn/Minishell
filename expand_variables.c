@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:15:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/07/05 16:15:10 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/09 06:25:19 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	expand_variable(t_vector *word, int *iter, char **env)
 	i++;
 	if (((char *)word->buffer)[i] == '?')
 		return (expand_exit_status(word, iter));
-	if (((char *)word->buffer)[i] == '\0' || 
+	if (((char *)word->buffer)[i] == '\0' ||
 			ft_isalnum(((char *)word->buffer)[i]) != 1)
 	{
 		(*iter)++;
