@@ -15,7 +15,7 @@ SRCS		:= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		  ft_dlstadd_back.c ft_dlstlast.c
 
 BUILD_DIR	:= .build
-DEPS		:= $(SRCS:%.c=%.d)
+DEPS		:= $(SRCS:%.c=$(BUILD_DIR)/%.d)
 OBJS		:= $(DEPS:.d=.o)
 
 NAME		= libft.a
@@ -26,13 +26,18 @@ $(NAME):	$(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
 clean:
-	rm -rf $(DEPS)
-	rm -rf $(OBJS)
+	rm -rf $(BUILD_DIR)
 
 fclean:	clean
 	rm -f $(NAME)
 
 re: fclean all
+
+$(BUILD_DIR):
+	mkdir $@
+
+$(BUILD_DIR)/%.o: %.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 -include $(DEPS)
 
