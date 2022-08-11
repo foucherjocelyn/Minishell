@@ -24,6 +24,8 @@
 # include "libft/libft.h"
 # include "lexer.h"
 # include "parser.h"
+# include <sys/wait.h>
+# include <sys/types.h>
 
 extern int	g_status;
 
@@ -45,4 +47,7 @@ int		execute_simple_command(t_syntax_node **tree_root,
 			t_syntax_node *command_tree, t_tab *tabs);
 void	close_standard_fds(void);
 int		check_for_unexpected_token(t_dlist *token_list);
+void	handle_non_interactiv_signals(int signum);
+void	handle_interactiv_signals(int signum);
+
 #endif
