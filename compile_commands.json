@@ -1738,5 +1738,45 @@
     "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
     "file": "/mnt/nfs/homes/jfoucher/projects/minishell/signal.c",
     "output": "/mnt/nfs/homes/jfoucher/projects/minishell/.build/signal.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g",
+      "-c",
+      "-I",
+      ".",
+      "-I",
+      "/mnt/nfs/homes/jfoucher/.brew/include",
+      "-o",
+      ".build/advance_to_next_command_argument.o",
+      "advance_to_next_command_argument.c"
+    ],
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/advance_to_next_command_argument.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/.build/advance_to_next_command_argument.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/clang",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g",
+      "-c",
+      "-I",
+      ".",
+      "-I",
+      "/mnt/nfs/homes/jfoucher/.brew/include",
+      "-o",
+      ".build/execute_redirection.o",
+      "execute_redirection.c"
+    ],
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/execute_redirection.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/.build/execute_redirection.o"
   }
 ]
