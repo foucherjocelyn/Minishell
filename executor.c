@@ -6,56 +6,13 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 02:43:54 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 04:03:46 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <assert.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/wait.h>
 #include "executor.h"
 #include "minishell.h"
 #include <stdio.h>
-
-int	execute_redirection(t_syntax_node *command_tree)
-{
-	char	*pathname;
-	int		oldfd;
-	int		newfd;
-	int		flags;
-
-	if (command_tree->token->type == GREAT)
-	{
-		flags = O_CREAT | O_WRONLY | O_TRUNC;
-		newfd = STDOUT_FILENO;
-	}
-	else if (command_tree->token->type == GREATGREAT)
-	{
-		flags = O_CREAT | O_WRONLY | O_APPEND;
-		newfd = STDOUT_FILENO;
-	}
-	else
-	{
-		flags = O_RDONLY;
-		newfd = STDIN_FILENO;
-	}
-	pathname = command_tree->left->token->value->buffer;
-	oldfd = open(pathname, flags, 0644);
-	if (oldfd == -1)
-	{
-		perror("minishell: invalid_file");
-		g_status = 1;
-		return (-1);
-	}
-	dup2(oldfd, newfd);
-	close(oldfd);
-    if (command_tree->right)
-		return (execute_redirection(command_tree->right));
-	return (0);
-}
 
 int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		t_redirections *redirect, t_tab *tabs)
