@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 04:02:16 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 04:11:25 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 04:16:03 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	get_flags(enum e_token_type type)
 	int	flags;
 
 	if (type == GREAT)
-		 flags = O_CREAT | O_WRONLY | O_TRUNC;
+		flags = O_CREAT | O_WRONLY | O_TRUNC;
 	else if (type == GREATGREAT)
 		flags = O_CREAT | O_WRONLY | O_APPEND;
 	else
@@ -38,6 +38,7 @@ static int	get_newfd(enum e_token_type type)
 		newfd = STDIN_FILENO;
 	return (newfd);
 }
+
 int	execute_redirection(t_syntax_node *command_tree)
 {
 	char	*pathname;
@@ -57,8 +58,7 @@ int	execute_redirection(t_syntax_node *command_tree)
 	}
 	dup2(oldfd, newfd);
 	close(oldfd);
-    if (command_tree->right)
+	if (command_tree->right)
 		return (execute_redirection(command_tree->right));
 	return (0);
 }
-

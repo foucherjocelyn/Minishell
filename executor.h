@@ -6,18 +6,18 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:44 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 04:03:51 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 04:14:48 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXECUTOR_H
 # define EXECUTOR_H
-#include <unistd.h>
-#include <assert.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/wait.h>
+# include <unistd.h>
+# include <assert.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <sys/wait.h>
 # include "parser.h"
 # include "minishell.h"
 # include "builtins.h"
