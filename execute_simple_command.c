@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 02:46:04 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:24:48 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	execute_in_child(t_syntax_node **tree_root,
 		if (filepath)
 		{
 			execve(filepath, argv, tabs->env);
-			perror ("minishell");
+			ft_perror(filepath, strerror(errno));
 			g_status = 126;
 			free(filepath);
 		}

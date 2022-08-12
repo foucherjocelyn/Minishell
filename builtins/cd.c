@@ -87,7 +87,7 @@ int	execute_builtin_cd(char **to_cd, t_tab *tabs)
 	if (check_args(to_cd, tabs->env))
 		return (EXIT_FAILURE);
 	if (to_cd[1] && access(to_cd[1], F_OK))
-		return (perror("minishell: cd: "), EXIT_FAILURE);
+		return (perror("minishell: cd"), EXIT_FAILURE);
 	path = path_using_chdir(to_cd[1]);
 	if (!path)
 		return (printf("Malloc failed, can't get the path\n"), EXIT_FAILURE);

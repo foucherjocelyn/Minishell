@@ -6,10 +6,11 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:58 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 03:37:29 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:24:11 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft/libft.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -17,6 +18,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "builtins.h"
+
+void	ft_perror(char *command_name, char *error)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(command_name, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putendl_fd(error, 2);
+}
 
 static char	*ft_strjoin_with_slash(char *s1, char *s2)
 {
@@ -36,20 +45,17 @@ static char	*check_executable_path(char *filepath)
 	stat(filepath, &statbuf);
 	if (access(filepath, F_OK))
 	{
-		perror ("minishell");
+		ft_perror(filepath, strerror(errno));
 		g_status = 127;
 	}
 	else if (!S_ISREG(statbuf.st_mode))
 	{
-		ft_putstr_fd("minishell: ", 2);
-		ft_putstr_fd(filepath, 2);
-		ft_putstr_fd(": ", 2);
-		ft_putendl_fd(strerror(EISDIR), 2);
+		ft_perror(filepath, strerror(EISDIR));
 		g_status = 126;
 	}
 	else if (access(filepath, X_OK))
 	{
-		perror ("minishell");
+		ft_perror(filepath, strerror(errno));
 		g_status = 126;
 	}
 	else
@@ -77,7 +83,7 @@ static char	*look_for_path_in_env_variable(char *pathname, char *path)
 	}
 	if (!filepath)
 	{
-		ft_putendl_fd(": command not found", 2);
+		ft_perror(pathname, "command not found");
 		g_status = 127;
 		free(filepath);
 		filepath = NULL;

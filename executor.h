@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:44 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 04:14:48 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:24:35 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 void	executor(t_syntax_node **tree_root, t_tab *tabs);
 int		is_a_builtin(const char *command);
 int		execute_redirection(t_syntax_node *command_tree);
+void	ft_perror(char *command_name, char *error);
 #endif
