@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:58 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 02:48:14 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 03:37:29 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static char	*ft_strjoin_with_slash(char *s1, char *s2)
 	return (result);
 }
 
-static	char *check_executable_path(char *filepath)
+static char	*check_executable_path(char *filepath)
 {
-	struct stat statbuf;
+	struct stat	statbuf;
 
 	stat(filepath, &statbuf);
 	if (access(filepath, F_OK))
@@ -58,40 +58,50 @@ static	char *check_executable_path(char *filepath)
 	return (NULL);
 }
 
+static char	*look_for_path_in_env_variable(char *pathname, char *path)
+{
+	char	**patharray;
+	char	*filepath;
+	int		i;
+
+	i = 0;
+	patharray = ft_split(path, ':');
+	while (patharray[i])
+	{
+		filepath = ft_strjoin_with_slash(patharray[i], pathname);
+		if (access(filepath, X_OK) == 0)
+			break ;
+		free(filepath);
+		filepath = NULL;
+		i++;
+	}
+	if (!filepath)
+	{
+		ft_putendl_fd(": command not found", 2);
+		g_status = 127;
+		free(filepath);
+		filepath = NULL;
+	}
+	free_2d_tab(&patharray);
+	return (filepath);
+}
+
 char	*get_filepath(char *pathname, char **env)
 {
 	char	*filepath;
 	char	*path;
-	char	**patharray;
-	int		i;
 
-	i = 0;
 	filepath = ft_strdup(pathname);
 	if (filepath[0] == '/' || (filepath[0] == '.' && filepath[1] == '/'))
 		filepath = check_executable_path(filepath);
 	else
 	{
 		path = ft_getenv(env, "PATH");
+		if (!path)
+			return (filepath);
 		free(filepath);
-		patharray = ft_split(path, ':');
-		while (patharray[i])
-		{
-			filepath = ft_strjoin_with_slash(patharray[i], pathname);
-			if (access(filepath, X_OK) == 0)
-				break ;
-			free(filepath);
-			filepath = NULL;
-			i++;
-		}
-		if (!filepath)
-		{
-			ft_putendl_fd(": command not found", 2);
-			g_status = 127;
-			free(filepath);
-			filepath = NULL;
-		}
+		filepath = look_for_path_in_env_variable(pathname, path);
 		free(path);
-		free_2d_tab(&patharray);
 	}
 	return (filepath);
 }
