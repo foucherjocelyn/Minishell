@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:28:47 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 00:23:29 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:43:43 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	execute_builtin_exit(char **argv, t_tab *tabs)
 
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
-	printf("exit\n");
 	rl_clear_history();
 	if (argv[1] && argv[2])
 	{
@@ -70,6 +69,7 @@ int	execute_builtin_exit(char **argv, t_tab *tabs)
 	else
 	{
 		free_2d_tab(&argv);
+		close_standard_fds();
 		exit(g_status);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 05:24:48 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:48:35 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,14 @@ int	is_a_builtin(const char *command)
 	return (0);
 }
 
-static void	execute_in_child(t_syntax_node **tree_root,
-		char **argv, t_tab *tabs)
+int	execute_simple_command(t_syntax_node **tree_root,
+		t_syntax_node *command_tree, t_tab *tabs)
 {
 	char	*filepath;
+	char	**argv;
 
+	argv = compose_argv(command_tree);
+	delete_syntax_tree(tree_root);
 	if (is_a_builtin(argv[0]))
 		g_status = execute_builtins(argv, tabs);
 	else
@@ -89,28 +92,10 @@ static void	execute_in_child(t_syntax_node **tree_root,
 			free(filepath);
 		}
 	}
-	close_standard_fds();
 	free_2d_tab(&argv);
-	delete_syntax_tree(tree_root);
+	close_standard_fds();
 	free_2d_tab(&(tabs->env));
 	free_2d_tab(&(tabs->exp));
 	exit(g_status);
-}
-
-int	execute_simple_command(t_syntax_node **tree_root,
-		t_syntax_node *command_tree, t_tab *tabs)
-{
-	char	**argv;
-
-	argv = compose_argv(command_tree);
-	if (is_a_builtin(argv[0]) && (*tree_root)->right == NULL)
-	{
-		delete_syntax_tree(tree_root);
-		g_status = execute_builtins(argv, tabs);
-		free_2d_tab(&argv);
-		return (0);
-	}
-	else
-		execute_in_child(tree_root, argv, tabs);
 	return (0);
 }
