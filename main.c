@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 04:24:20 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:37:23 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 			return ;
 		}
 		else
-			ft_dlstclear(&token_list, NULL);
+			ft_dlstclear(&token_list, (void*)destroy_token);
 	}
 	else
 		free(line);

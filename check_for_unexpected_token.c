@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:03:11 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 10:24:03 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:21:26 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_for_unexpected_token(t_dlist *token_list)
 		{
 			if (get_token(token_list->next)->type != WORD)
 			{
-				print_syntax_error(get_token(token_list->next)->value->buffer);
+				print_syntax_error((char*)get_token(token_list->next)->value->buffer);
 				return (-1);
 			}
 		}
