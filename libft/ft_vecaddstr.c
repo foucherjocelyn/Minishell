@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstadd_back.c                                  :+:      :+:    :+:   */
+/*   ft_vecaddstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 10:40:42 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 02:04:07 by jfoucher         ###   ########.fr       */
+/*   Created: 2022/08/13 12:24:08 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/08/13 12:28:50 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <stdio.h>
 #include "libft.h"
 
-void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
+int	ft_vecaddstr(t_vector *vec, char *str)
 {
-	t_dlist	*last;
+	int	i;
 
-	if (*lst)
+	i = 0;
+	while (str[i])
 	{
-		last = ft_dlstlast(*lst);
-		last->next = new;
-		new->prev = last;
+		if (ft_vecadd(vec, &(str[i])))
+		{
+			perror("");
+			return (-1);
+		}
+		i++;
 	}
-	else
-		*lst = new;
+	return (0);
 }

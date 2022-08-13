@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstadd_back.c                                  :+:      :+:    :+:   */
+/*   advance_to_next_command_argument.c                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 10:40:42 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 02:04:07 by jfoucher         ###   ########.fr       */
+/*   Created: 2022/08/12 01:59:42 by jfoucher          #+#    #+#             */
+/*   Updated: 2022/08/12 02:00:28 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
+#include "lexer.h"
 
-void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
+void	advance_to_next_command_argument(t_dlist **token)
 {
-	t_dlist	*last;
-
-	if (*lst)
+	while (*token && get_token(*token)->type != PIPE)
 	{
-		last = ft_dlstlast(*lst);
-		last->next = new;
-		new->prev = last;
+		if (get_token(*token)->type == WORD)
+			break ;
+		if (get_token(*token)->type == GREAT
+			|| get_token(*token)->type == GREATGREAT
+			|| get_token(*token)->type == LESS)
+		{
+			(*token) = (*token)->next;
+			(*token) = (*token)->next;
+		}
 	}
-	else
-		*lst = new;
 }

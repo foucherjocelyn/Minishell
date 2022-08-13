@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 16:15:09 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 06:25:19 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 02:11:40 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,14 @@ static int	expand_exit_status(t_vector *word, int *iter)
 	return (0);
 }
 
-int	expand_variable(t_vector *word, int *iter, char **env)
+void	expand_variable2(t_vector *word, int *iter, char **env)
 {
-	int			i;
-	char		*variable;
 	t_vector	name;
+	char		*variable;
+	int			i;
 
-	i = (*iter);
+	i = *iter;
 	i++;
-	if (((char *)word->buffer)[i] == '?')
-		return (expand_exit_status(word, iter));
-	if (((char *)word->buffer)[i] == '\0' ||
-			ft_isalnum(((char *)word->buffer)[i]) != 1)
-	{
-		(*iter)++;
-		return (0);
-	}
 	name = ft_veccreate(2, sizeof(char));
 	while (((char *)word->buffer)[i] != '\0'
 			&& ft_isalnum(((char *)word->buffer)[i]) == 1)
@@ -64,5 +56,22 @@ int	expand_variable(t_vector *word, int *iter, char **env)
 		(*iter) += ft_strlen(variable);
 	}
 	free(variable);
+}
+
+int	expand_variable(t_vector *word, int *iter, char **env)
+{
+	int			i;
+
+	i = (*iter);
+	i++;
+	if (((char *)word->buffer)[i] == '?')
+		return (expand_exit_status(word, iter));
+	if (((char *)word->buffer)[i] == '\0' ||
+			ft_isalnum(((char *)word->buffer)[i]) != 1)
+	{
+		(*iter)++;
+		return (0);
+	}
+	expand_variable2(word, iter, env);
 	return (0);
 }

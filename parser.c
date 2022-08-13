@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:14 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 06:49:50 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 02:01:44 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,6 @@
 #include "lexer.h"
 #include "parser.h"
 #include "expander.h"
-
-void	advance_to_next_command_argument(t_dlist **token)
-{
-	while (*token && get_token(*token)->type != PIPE)
-	{
-		if (get_token(*token)->type == WORD)
-			break ;
-		if (get_token(*token)->type == GREAT
-			|| get_token(*token)->type == GREATGREAT
-			|| get_token(*token)->type == LESS)
-		{
-			(*token) = (*token)->next;
-			(*token) = (*token)->next;
-		}
-	}
-}
 
 t_syntax_node	*parse_redirection(t_dlist **token, char **envp)
 {

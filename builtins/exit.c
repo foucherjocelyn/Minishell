@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:28:47 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 08:55:44 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 05:43:43 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,27 @@ int	execute_builtin_exit(char **argv, t_tab *tabs)
 
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
-	printf("exit\n");
-	close_standard_fds();
 	rl_clear_history();
 	if (argv[1] && argv[2])
 	{
 		ft_putstr_fd("bash: exit: too many arguments", 2);
+		close_standard_fds();
 		exit (1);
 	}
 	if (argv[1])
 	{
-		if (!ft_isstrdigit(argv[1]))
+		/*if (!ft_isstrdigit(argv[1]))
 			return (ft_putstr_fd("minishell: exit: numeric argument required",
-					2), exit(2), 1);
+					2), exit(2), 1);*/
 		exit_status = ft_atoll(argv[1]);
 		free_2d_tab(&argv);
+		close_standard_fds();
 		exit(exit_status);
 	}
 	else
 	{
 		free_2d_tab(&argv);
+		close_standard_fds();
 		exit(g_status);
 	}
 }

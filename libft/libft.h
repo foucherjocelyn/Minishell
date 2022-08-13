@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:24:35 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/05 10:43:21 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:30:12 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_vector		ft_veccreate(size_t capacity, size_t item_size);
 void			ft_vecdestroy(t_vector *vec);
 int				ft_vecset(t_vector vec, unsigned int index, void *item);
 int				ft_vecadd(t_vector *vec, void *item);
+int				ft_vecaddstr(t_vector *vec, char *str);
 void			*ft_vecget(t_vector vec, unsigned int index);
 void			ft_vecremove(t_vector *vec, unsigned int first,
 					unsigned int last);

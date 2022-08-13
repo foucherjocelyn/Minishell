@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/15 03:15:32 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 12:22:27 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:32:51 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ t_token	*take_greatgreat(char **iter)
 	token = create_token(GREATGREAT);
 	if (!token)
 		return (NULL);
-	if (ft_vecadd(token->value, ">>\0") == -1)
+	if (ft_vecaddstr(token->value, ">>") == -1)
 	{
-		perror ("minishell");
 		destroy_token(token);
 		return (NULL);
 	}
@@ -38,9 +37,8 @@ t_token	*take_great(char **iter)
 	token = create_token(GREAT);
 	if (!token)
 		return (NULL);
-	if (ft_vecadd(token->value, ">\0"))
+	if (ft_vecaddstr(token->value, ">"))
 	{
-		perror ("minishell");
 		destroy_token(token);
 		return (NULL);
 	}
@@ -55,9 +53,8 @@ t_token	*take_less(char **iter)
 	token = create_token(LESS);
 	if (!token)
 		return (NULL);
-	if (ft_vecadd(token->value, "<\0"))
+	if (ft_vecaddstr(token->value, "<"))
 	{
-		perror ("minishell");
 		destroy_token(token);
 		return (NULL);
 	}

@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:09:04 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 14:22:46 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/12 01:43:38 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,25 @@ static t_token	*take_pipe(char **iter)
 	return (NULL);
 }
 
+static t_dlist	*take_next_token(char **iter)
+{
+	t_token	*token;
+
+	if (**iter == '|')
+		token = take_pipe(iter);
+	else if (**iter == '>' || **iter == '<')
+		token = take_redirection(iter);
+	else
+		token = take_word(iter);
+	if (!token)
+		return (NULL);
+	return (ft_dlstnew(token));
+}
+
 t_dlist	*lexer(char *iter)
 {
 	t_dlist	*token_list;
 	t_dlist	*new;
-	t_token	*token;
 
 	token_list = NULL;
 	while (*iter)
@@ -71,22 +85,10 @@ t_dlist	*lexer(char *iter)
 			iter++;
 		else
 		{
-			if (*iter == '|')
-				token = take_pipe(&iter);
-			else if (*iter == '>' || *iter == '<')
-				token = take_redirection(&iter);
-			else
-				token = take_word(&iter);
-			if (!token)
-			{
-				ft_dlstclear(&token_list, (void*)destroy_token);
-				g_status = 2;
-				return (NULL);
-			}
-			new = ft_dlstnew(token);
+			new = take_next_token(&iter);
 			if (!new)
 			{
-				ft_dlstclear(&token_list, (void*)destroy_token);
+				ft_dlstclear(&token_list, (void *)destroy_token);
 				g_status = 2;
 				return (NULL);
 			}
