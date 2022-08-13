@@ -1,4 +1,4 @@
-CFLAGS		?= -Wall -Werror -Wextra -MMD -MP -g
+CFLAGS		?= -Wall -Werror -Wextra -Weverything -MMD -MP -g
 LDFLAGS 	?=
 
 SRCS		= main.c lexer.c parser.c executor.c execute_simple_command.c \
