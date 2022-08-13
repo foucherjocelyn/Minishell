@@ -36,6 +36,7 @@ static void	name_with_value(t_tab *tabs, char *unset)
 	j = found_name(tabs->env, unset);
 	if (j != -1)
 	{
+		free(tabs->env[j]);
 		while (tabs->env[j])
 		{
 			tabs->env[j] = tabs->env[j + 1];
@@ -52,6 +53,7 @@ static void	name_without_value(t_tab *tabs, char *unset)
 	j = found_unset_name_without_value(tabs->exp, unset);
 	if (j != -1)
 	{
+		free(tabs->exp[j]);
 		while (tabs->exp[j])
 		{
 			tabs->exp[j] = tabs->exp[j + 1];
@@ -68,6 +70,7 @@ static void	exists_in_exp_but_not_in_env(t_tab *tabs, char *unset)
 	j = found_name(tabs->exp, unset);
 	if (j != -1)
 	{
+		free(tabs->exp[j]);
 		while (tabs->exp[j])
 		{
 			tabs->exp[j] = tabs->exp[j + 1];

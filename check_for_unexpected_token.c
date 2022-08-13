@@ -47,10 +47,8 @@ int	check_for_unexpected_token(t_dlist *token_list)
 			&& get_token(token_list)->type != PIPE)
 		{
 			if (get_token(token_list->next)->type != WORD)
-			{
-				print_syntax_error((char*)get_token(token_list->next)->value->buffer);
-				return (-1);
-			}
+				return (print_syntax_error((char *)
+						get_token(token_list->next)->value->buffer), -1);
 		}
 		token_list = token_list->next;
 	}

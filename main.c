@@ -91,11 +91,19 @@ void	parse_and_execute_line(char *line, t_tab *tabs)
 			return ;
 		}
 		else
-			ft_dlstclear(&token_list, (void*)destroy_token);
+			ft_dlstclear(&token_list, (void *)destroy_token);
 	}
 	else
 		free(line);
 	g_status = 2;
+}
+
+static void	clear_exit(t_tab *tabs)
+{
+	close_standard_fds();
+	rl_clear_history();
+	free_2d_tab(&tabs->env);
+	free_2d_tab(&tabs->exp);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -107,7 +115,6 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	tabs.env = cpy_exp(envp);
 	tabs.exp = cpy_exp(envp);
-	g_status = 0;
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, &handle_interactiv_signals);
 	line = readline("$ ");
@@ -123,9 +130,6 @@ int	main(int argc, char **argv, char **envp)
 		signal(SIGINT, &handle_interactiv_signals);
 		line = readline("$ ");
 	}
-	close_standard_fds();
-	rl_clear_history();
-	free_2d_tab(&tabs.env);
-	free_2d_tab(&tabs.exp);
+	clear_exit(&tabs);
 	return (g_status);
 }

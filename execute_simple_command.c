@@ -72,12 +72,12 @@ int	is_a_builtin(const char *command)
 }
 
 static void	execute_in_child(t_syntax_node **tree_root,
-		char **argv, t_tab *tabs)
+		char **argv, t_tab *tabs, t_redirections *redirect)
 {
 	char	*filepath;
 
 	if (is_a_builtin(argv[0]))
-		g_status = execute_builtins(argv, tabs);
+		g_status = execute_builtins(argv, tabs, redirect);
 	else
 	{
 		filepath = get_filepath(argv[0], tabs->env);
@@ -98,7 +98,7 @@ static void	execute_in_child(t_syntax_node **tree_root,
 }
 
 int	execute_simple_command(t_syntax_node **tree_root,
-		t_syntax_node *command_tree, t_tab *tabs)
+		t_syntax_node *command_tree, t_tab *tabs, t_redirections *redirect)
 {
 	char	**argv;
 
@@ -106,11 +106,11 @@ int	execute_simple_command(t_syntax_node **tree_root,
 	if (is_a_builtin(argv[0]) && (*tree_root)->right == NULL)
 	{
 		delete_syntax_tree(tree_root);
-		g_status = execute_builtins(argv, tabs);
+		g_status = execute_builtins(argv, tabs, redirect);
 		free_2d_tab(&argv);
 		return (0);
 	}
 	else
-		execute_in_child(tree_root, argv, tabs);
+		execute_in_child(tree_root, argv, tabs, redirect);
 	return (0);
 }

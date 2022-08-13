@@ -35,7 +35,9 @@ typedef struct s_redirections
 	int	fdout;
 	int	pipein[2];
 	int	pipeout[2];
-}t_redirections;
+	int	save_fdin;
+	int	save_fdout;
+}	t_redirections;
 
 typedef struct s_tab
 {
@@ -44,7 +46,8 @@ typedef struct s_tab
 }	t_tab;
 
 int		execute_simple_command(t_syntax_node **tree_root,
-			t_syntax_node *command_tree, t_tab *tabs);
+			t_syntax_node *command_tree, t_tab *tabs,
+			t_redirections *redirect);
 void	close_standard_fds(void);
 int		check_for_unexpected_token(t_dlist *token_list);
 void	handle_non_interactiv_signals(int signum);

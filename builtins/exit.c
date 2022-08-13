@@ -43,33 +43,29 @@ static long long	ft_atoll(const char *nptr)
 	return (result);
 }
 
-int	execute_builtin_exit(char **argv, t_tab *tabs)
+int	execute_builtin_exit(char **argv, t_tab *tabs, t_redirections *redirect)
 {
 	int	exit_status;
 
 	free_2d_tab(&tabs->env);
 	free_2d_tab(&tabs->exp);
+	close(redirect->save_fdin);
+	close(redirect->save_fdout);
 	rl_clear_history();
 	if (argv[1] && argv[2])
 	{
 		ft_putstr_fd("bash: exit: too many arguments", 2);
+		free_2d_tab(&argv);
 		close_standard_fds();
 		exit (1);
 	}
 	if (argv[1])
 	{
-		/*if (!ft_isstrdigit(argv[1]))
-			return (ft_putstr_fd("minishell: exit: numeric argument required",
-					2), exit(2), 1);*/
 		exit_status = ft_atoll(argv[1]);
 		free_2d_tab(&argv);
 		close_standard_fds();
 		exit(exit_status);
 	}
 	else
-	{
-		free_2d_tab(&argv);
-		close_standard_fds();
-		exit(g_status);
-	}
+		return (free_2d_tab(&argv), close_standard_fds(), exit(g_status), 0);
 }

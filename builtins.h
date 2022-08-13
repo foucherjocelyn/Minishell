@@ -19,7 +19,8 @@ int		execute_builtin_cd(char **to_cd, t_tab *tabs);
 void	chdir_not_found(void);
 int		execute_builtin_echo(char **args);
 int		execute_builtin_env(char **env);
-int		execute_builtin_exit(char **argv, t_tab *tabs);
+int		execute_builtin_exit(char **argv, t_tab *tabs,
+			t_redirections *redirect);
 int		execute_builtin_export(t_tab *tabs, char **to_export);
 int		execute_builtin_pwd(void);
 void	pwd_not_found(void);
@@ -39,7 +40,7 @@ void	free_2d_tab(char ***tabs);
 void	display(char **display);
 int		len_env(char **env);
 int		found_name(char **env, char *to_find);
-int		execute_builtins(char **argv, t_tab *tabs);
+int		execute_builtins(char **argv, t_tab *tabs, t_redirections *redirect);
 int		display_export_error(int error_count, char *error);
 char	*to_find(char *to_change);
 

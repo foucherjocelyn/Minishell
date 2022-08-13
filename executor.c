@@ -32,7 +32,7 @@ int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		}
 	}
 	if (command_tree->left)
-		execute_simple_command(tree_root, command_tree->left, tabs);
+		execute_simple_command(tree_root, command_tree->left, tabs, redirect);
 	return (0);
 }
 
@@ -87,8 +87,6 @@ void	execute_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 void	executor(t_syntax_node **tree_root, t_tab *tabs)
 {
 	t_redirections	redirect;
-	int				save_fdin;
-	int				save_fdout;
 
 	redirect.fdin = STDIN_FILENO;
 	redirect.fdout = STDOUT_FILENO;
@@ -100,13 +98,13 @@ void	executor(t_syntax_node **tree_root, t_tab *tabs)
 		&& (*tree_root)->left->left->left
 		&& is_a_builtin((*tree_root)->left->left->left->token->value->buffer))
 	{
-		save_fdin = dup(STDIN_FILENO);
-		save_fdout = dup(STDOUT_FILENO);
+		redirect.save_fdin = dup(STDIN_FILENO);
+		redirect.save_fdout = dup(STDOUT_FILENO);
 		execute_command(tree_root, (*tree_root)->left, &redirect, tabs);
-		dup2(save_fdin, STDIN_FILENO);
-		dup2(save_fdout, STDOUT_FILENO);
-		close(save_fdin);
-		close(save_fdout);
+		dup2(redirect.save_fdin, STDIN_FILENO);
+		dup2(redirect.save_fdout, STDOUT_FILENO);
+		close(redirect.save_fdin);
+		close(redirect.save_fdout);
 	}
 	else
 		execute_job(tree_root, *tree_root, &redirect, tabs);
