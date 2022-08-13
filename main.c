@@ -107,24 +107,20 @@ int	main(int argc, char **argv, char **envp)
 	tabs.env = cpy_exp(envp);
 	tabs.exp = cpy_exp(envp);
 	g_status = 0;
-	// signal(SIGQUIT, &handle_interactiv_signals);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, &handle_interactiv_signals);
-	// signal(SIGINT, SIG_IGN);
 	line = readline("$ ");
 	while (line)
 	{
-		// signal(SIGQUIT, &handle_non_interactiv_signals);
-		// signal(SIGINT, &handle_non_interactiv_signals);
+		signal(SIGQUIT, &handle_non_interactiv_signals);
+		signal(SIGINT, &handle_non_interactiv_signals);
 		if (line[0] == '\0')
 			free(line);
 		else
 			parse_and_execute_line(line, &tabs);
-		signal(SIGQUIT, &handle_non_interactiv_signals);
-		signal(SIGINT, &handle_non_interactiv_signals);
+		signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, &handle_interactiv_signals);
 		line = readline("$ ");
-		// signal(SIGQUIT, SIG_IGN);
-		// signal(SIGINT, &handle_interactiv_signals);
 	}
 	close_standard_fds();
 	rl_clear_history();
