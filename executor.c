@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/14 17:26:53 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:44:39 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ void	execute_last_job(t_syntax_node **tree_root, t_syntax_node *command_tree,
 		safe_close(redirect->pipein[0]);
 		safe_close(redirect->pipein[1]);
 		if (waitpid(pid, &wstatus, 0) != -1)
+		{
 			if (WIFEXITED(wstatus))
 				g_status = WEXITSTATUS(wstatus);
+			else if (WIFSIGNALED(wstatus))
+				g_status = 128 + WTERMSIG(wstatus);
+		}
 	}
 }
 
