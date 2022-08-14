@@ -12,7 +12,7 @@ SRCS		= main.c lexer.c parser.c executor.c execute_simple_command.c \
 				check_for_unexpected_token.c close_standard_fds.c \
 				create_token.c get_token.c get_file_path.c	\
 				signal.c advance_to_next_command_argument.c \
-				execute_redirection.c
+				execute_redirection.c safe_close.c
 
 
 LIBFT		:= libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:10:54 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/09 06:52:37 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/13 18:37:23 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	close_standard_fds(void);
 int		check_for_unexpected_token(t_dlist *token_list);
 void	handle_non_interactiv_signals(int signum);
 void	handle_interactiv_signals(int signum);
+int		safe_close(int fd);
 
 #endif
