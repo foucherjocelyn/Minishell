@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/13 18:39:32 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:26:53 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,22 @@ int	execute_command(t_syntax_node **tree_root, t_syntax_node *command_tree,
 	safe_close(redirect->pipein[1]);
 	safe_close(redirect->pipeout[0]);
 	safe_close(redirect->pipeout[1]);
+	g_status = 0;
 	if (command_tree->right)
 	{
 		if (execute_redirection(command_tree->right) == -1)
-		{
-			close_standard_fds();
-			return (-1);
-		}
+			g_status = 1;
 	}
-	if (command_tree->left)
+	if (!g_status && command_tree->left)
 		execute_simple_command(tree_root, command_tree->left, tabs, redirect);
+	else
+	{
+		close_standard_fds();
+		delete_syntax_tree(tree_root);
+		free_2d_tab(&(tabs->env));
+		free_2d_tab(&(tabs->exp));
+		exit (g_status);
+	}
 	return (0);
 }
 
@@ -95,7 +101,7 @@ void	executor(t_syntax_node **tree_root, t_tab *tabs)
 	redirect.pipeout[0] = -1;
 	redirect.pipeout[1] = -1;
 	if ((*tree_root)->right == NULL
-		&& (*tree_root)->left->left->left
+		&& (*tree_root)->left->left
 		&& is_a_builtin((*tree_root)->left->left->left->token->value->buffer))
 	{
 		redirect.save_fdin = dup(STDIN_FILENO);

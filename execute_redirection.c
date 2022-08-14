@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 04:02:16 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/13 18:40:08 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:22:16 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	execute_redirection(t_syntax_node *command_tree)
 	oldfd = open(pathname, flags, 0644);
 	if (oldfd == -1)
 	{
-		perror("minishell: invalid_file");
+		ft_putstr_fd("minishell: ", 2);
+		perror(pathname);
 		g_status = 1;
 		return (-1);
 	}
