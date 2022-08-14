@@ -1798,5 +1798,25 @@
     "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
     "file": "/mnt/nfs/homes/jfoucher/projects/minishell/execute_redirection.c",
     "output": "/mnt/nfs/homes/jfoucher/projects/minishell/.build/execute_redirection.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-g",
+      "-c",
+      "-I",
+      ".",
+      "-I",
+      "/mnt/nfs/homes/jfoucher/.brew/include",
+      "-o",
+      ".build/safe_close.o",
+      "safe_close.c"
+    ],
+    "directory": "/mnt/nfs/homes/jfoucher/projects/minishell",
+    "file": "/mnt/nfs/homes/jfoucher/projects/minishell/safe_close.c",
+    "output": "/mnt/nfs/homes/jfoucher/projects/minishell/.build/safe_close.o"
   }
 ]

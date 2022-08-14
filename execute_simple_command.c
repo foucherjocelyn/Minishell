@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:41 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/12 05:24:48 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:59:11 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	execute_in_child(t_syntax_node **tree_root,
 {
 	char	*filepath;
 
+	delete_syntax_tree(tree_root);
 	if (is_a_builtin(argv[0]))
 		g_status = execute_builtins(argv, tabs, redirect);
 	else
@@ -91,7 +92,6 @@ static void	execute_in_child(t_syntax_node **tree_root,
 	}
 	close_standard_fds();
 	free_2d_tab(&argv);
-	delete_syntax_tree(tree_root);
 	free_2d_tab(&(tabs->env));
 	free_2d_tab(&(tabs->exp));
 	exit(g_status);

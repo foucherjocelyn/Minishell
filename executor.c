@@ -6,7 +6,7 @@
 /*   By: jfoucher <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 10:08:51 by jfoucher          #+#    #+#             */
-/*   Updated: 2022/08/14 17:44:39 by jfoucher         ###   ########.fr       */
+/*   Updated: 2022/08/14 17:56:05 by jfoucher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	executor(t_syntax_node **tree_root, t_tab *tabs)
 	redirect.pipein[1] = -1;
 	redirect.pipeout[0] = -1;
 	redirect.pipeout[1] = -1;
+	redirect.save_fdin = -1;
+	redirect.save_fdout = -1;
 	if ((*tree_root)->right == NULL
 		&& (*tree_root)->left->left
 		&& is_a_builtin((*tree_root)->left->left->left->token->value->buffer))
