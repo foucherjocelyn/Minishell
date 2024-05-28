@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lexer.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +21,7 @@
 #include "minishell.h"
 #include "builtins.h"
 #include "executor.h"
+#include "lexer.h"
 
 int	g_status;
 

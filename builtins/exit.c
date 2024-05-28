@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <limits.h>
-#include "minishell.h"
+#include "../minishell.h"
 #include "../builtins.h"
 
 static long long	ft_atoll(const char *nptr)

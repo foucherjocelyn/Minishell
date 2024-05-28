@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "builtins.h"
+#include "../minishell.h"
+#include "../builtins.h"
 
 int	execute_builtins(char **argv, t_tab *tabs, t_redirections *redirect)
 {
